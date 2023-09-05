@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW2 Part 2">
+<title>HW2 Part 2</title>
+<link rel="stylesheet" href="styles.css">
+<!-- 
+    For Part 2:
+Create a webpage with a form that will have:
+three input boxes for the user to type three integers (numbers)
+a button to process the data (numbers) typed by the user
+a button to clear the form
+a textarea to display the results of the process (or it can be a div or paragraph element)
+You will write the JavaScript code that will:
+receive the data from those three input boxes for the three integers after the user click on the button to process the data
+you will calculate the sum, the average, and the product of the three integers
+you will also calculate the smallest and the largest of the three integers typed
+TIP: For finding the smallest and largest number, use the Math Object Methods of min and max
+you will present the results of these calculations in the number area - DO NOT USE ALERT BOXES!!!
+your script should not present any result if the user does not type NUMBERS in the input boxes and, 
+instead, you should present an error message in the textarea
+-->
+<script>
+    function res() {
+        // reset all the forms and result
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("results").innerHTML = "";
+    }
+    function process() {
+        var number1, number2, number3, n1, n2, n3, sum, avg, product, min, max, numberStr;
+        //    n1= parseInt(document.forms["hw2pt2form"].elements["num1"].value);
+        number1 = document.getElementById("num1").value;
+        number2 = document.getElementById("num2").value;
+        number3 = document.getElementById("num3").value;
+        console.log("process: " +number1 + "  number 2:"+ number2 + "  number3: " + number3);
+        n1 = parseInt(number1);
+        n2 = parseInt(number2);
+        n3 = parseInt(number3);
+
+        //check for input type, display error message for non number in the input boxes
+        if (isNaN(n1) || isNaN(n2) || isNaN(n3) ) {          
+            //display error message in textarea, clear the area after every click
+            numberStr ="";
+            numberStr += 'ERROR\nInput is not a number';
+            document.getElementById("result").innerHTML = (numberStr);
+
+            //display error message in the error paragraph area
+            if (isNaN(n1)) { n1 = number1 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n1 = number1 }
+            if (isNaN(n2)) { n2 = number2 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n2 = number2 }
+            if (isNaN(n3)) { n3 = number3 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n3 = number3 }
+            document.getElementById("results").innerHTML = "";
+            document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1.5em;'>ERROR<br><span>";
+            document.getElementById("results").innerHTML += "Number 1: " + n1 + "<br>";
+            document.getElementById("results").innerHTML += "Number 2: " + n2 + "<br>";
+            document.getElementById("results").innerHTML += "Number 3: " + n3 + "<br><br>";
+        }
+        else {
+            console.log ("is valid number" +n1 +" n2:" + n2 + " n3:" + n3);
+            // calculate sum, average and product of all 3 numbers
+            sum = n1 + n2 + n3;
+            avg = sum / 3;
+            product = n1 * n2 * n3;
+            min = Math.min(n1, n2, n3);
+            max = Math.max(n1, n2, n3);
+
+            numberStr = "";
+            numberStr += "The sum was " + sum;
+            numberStr += '\nThe average was ' + parseFloat(avg).toFixed(2);
+            numberStr += '\nThe product was ' + product;
+            numberStr += '\nThe smallest was ' + min;
+            numberStr += '\nThe largest was ' + max;
+  
+            //display result in textarea
+            document.getElementById("result").value = (numberStr);
+        }  
+    }
+</script>
+</head>
+<body>
+    <header><h1>Homework 2 - Part 2</h1></header>
+    <p>
+    <a href="hw2.html">Back to Homework 2 main page</a>
+    <br><br>
+    </p>
+
+    <form name="hw2pt2form">
+        <label for="num1">Number 1: </label><input type="number" id="num1" size="10"><br><br>
+        <label for="num2">Number 2: </label><input type="number" id="num2" size="10"><br><br>
+        <label for="num3">Number 3: </label><input type="number" id="num3" size="10"><br><br>
+        <!-- used type=button for submit-->
+        <input type="button" onclick="process()" value="SUBMIT">
+        <!-- type submit makes display disappear after clicking
+        <input type="submit" onclick="process()" value="submit typed SUBMIT">
+        <input type="submit" onclick="return false" value="return false">
+        -->
+        &nbsp; &nbsp; &nbsp;
+        <input type="reset"  onclick="res()" value="RESET"><br><br>
+        <label for="result">Result:<br></label><textarea id="result" rows="6" cols="25" readonly></textarea><br><br>
+
+    </form>
+    <div id="results"></div>
+
+ </body>
+ </html>
