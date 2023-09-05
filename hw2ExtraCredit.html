@@ -16,67 +16,62 @@ For example: if the user types 10 in the U.S. dollars input field, in the third 
 - notice that the results do not have more than 2 decimal places and are aligned to the right:
 -->
 
-<style>
-    input:hover {
-    background-color: lavenderblush;   
-    }
-    table td:nth-child(2) { text-align: end; }
-    table td:nth-child(3) { text-align: end; }
+    <style>
+        input:hover {
+        background-color: lavenderblush;   
+        }
+        table td:nth-child(2) { text-align: end; }
+        table td:nth-child(3) { text-align: end; }
     </style>
+   <script>
+    function convert() {
+        var dollar, euroConvert, euroRate, canConvert, canRate, hkConvert, hkRate, japConvert, japRate, mexConvert, mexRate;
+        euroRate = 0.84;
+        canRate = 1.23;
+        hkRate = 7.76;
+        japRate = 110.80;
+        mexRate = 19.82;
 
+        dollar = parseFloat(document.getElementById("USamt").value);
+
+        euroConvert = dollar * euroRate;
+        canConvert = dollar * canRate;
+        hkConvert = dollar * hkRate;
+        japConvert = dollar * japRate;
+        mexConvert = dollar * mexRate;
+
+        document.getElementById("USamount").innerHTML = parseFloat(dollar).toFixed(2);
+        document.getElementById("EuroConvert").innerHTML = parseFloat(euroConvert).toFixed(2);
+        document.getElementById("CanadianConvert").innerHTML = parseFloat(canConvert).toFixed(2);
+        document.getElementById("HongKongConvert").innerHTML = parseFloat(hkConvert).toFixed(2);
+        document.getElementById("JapaneseConvert").innerHTML = parseFloat(japConvert).toFixed(2);
+        document.getElementById("MexicanConvert").innerHTML = parseFloat(mexConvert).toFixed(2);
+    }
+    
+</script>
+</head>
+<body>
     <header><h1>Homework 2 - Extra Credit</h1></header>
     <p>
     <a href="hw2.html">Back to Homework 2 main page</a>
 
 
-    <br><br>
-    <script>
-        function convert() {
-            var dollar, euroConvert, euroRate, canConvert, canRate, hkConvert, hkRate, japConvert, japRate, mexConvert, mexRate;
-            euroRate = 0.84;
-            canRate = 1.23;
-            hkRate = 7.76;
-            japRate = 110.80;
-            mexRate = 19.82;
+    <br><br></p>
+ 
 
-            dollar = parseFloat(document.getElementById("USamt").value);
-            console.log ("dollar: " + dollar);
-            euroConvert = dollar * euroRate;
-            canConvert = dollar * canRate;
-            hkConvert = dollar * hkRate;
-            japConvert = dollar * japRate;
-            mexConvert = dollar * mexRate;
-
-            document.getElementById("USamount").innerHTML = parseFloat(dollar).toFixed(2);
-            document.getElementById("EuroConvert").innerHTML = parseFloat(euroConvert).toFixed(2);
-            document.getElementById("CanadianConvert").innerHTML = parseFloat(canConvert).toFixed(2);
-            document.getElementById("HongKongConvert").innerHTML = parseFloat(hkConvert).toFixed(2);
-            document.getElementById("JapaneseConvert").innerHTML = parseFloat(japConvert).toFixed(2);
-            document.getElementById("MexicanConvert").innerHTML = parseFloat(mexConvert).toFixed(2);
-        }
-        
-    </script>
-</head>
-    <body>
-
-        <label for="USamount">Enter Amount of US Dollars </label><input type="number" id="USamt">
+        <label for="USamt">Enter Amount of US Dollars </label><input type="number" id="USamt">
         <input type="button" value="Convert" onClick="convert()">
         <table>
             <tr><th>Currency</th><th>Rate</th><th>Value</th></tr>
-            <tr></tr><td text-align="left">Euro</td><td >0.84</td><td id="EuroConvert" readonly></td></tr>
-            <tr><td>Canadian Dollar</td><td >1.23</td><td id="CanadianConvert" readonly></td></tr>
-            <tr><td>Hong Kong Dollar</td><td class="currency">7.76</td><td id="HongKongConvert" readonly></td></tr>
-            <tr><td>Japanese Yen</td><td class="currency">110.80</td><td id="JapaneseConvert" readonly></td></tr>
-            <tr><td>Mexican Peso</td><td class="currency">19.82</td><td id="MexicanConvert" readonly></td></tr>
-            <tr><td colspan="2" style='font-size:1.25em; color: red;'>Amount of US Dollars</td>
-            <td id="USamount" input type="number"></td>
+            <tr><td>Euro</td><td >0.84</td><td id="EuroConvert" ></td></tr>
+            <tr><td>Canadian Dollar</td><td >1.23</td><td id="CanadianConvert" ></td></tr>
+            <tr><td>Hong Kong Dollar</td><td class="currency">7.76</td><td id="HongKongConvert" ></td></tr>
+            <tr><td>Japanese Yen</td><td class="currency">110.80</td><td id="JapaneseConvert" ></td></tr>
+            <tr><td>Mexican Peso</td><td class="currency">19.82</td><td id="MexicanConvert" ></td></tr>
+            <tr><td colspan="2" style='font-size:1.5em; color: red;'>Amount of US Dollars</td>
+            <td id="USamount" ></td>
             </tr>
-
         </table>
-
-
-    </form>
-
     </body>
 
 </html>
