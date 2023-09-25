@@ -1,12 +1,12 @@
 :root {
    --accent-color: rgba(128, 56, 176, 0.76);
-   --accent-dark-color: #EF2B2F;
+   --accent-dark-color: #cadcf5;
    --font-color: #595959;
    --bg-color: rgba(202, 241, 242, 0.72);
 }
 
 body {
-   background-color: #e2e4da;
+   background-color: #ecf6f0;
    font-family: Helvetica, sans-serif;
    color: var(--font-color);
 }
@@ -16,19 +16,7 @@ main {
    margin: 30px; 
   /* padding: 5px 14px; */
 }
-div {
-   border: solid 2px blue;
-/* position: relative; */
 
-   padding: 15px;
- /*  margin: 30px; */
-   background-color: #c7c7f0;
-
-}
-form {
-   width: 300px;
-   margin: 0px auto;
-}
 table {
    margin-left: 30px;
 }
@@ -36,15 +24,14 @@ table  td {
    border-radius: 5px;
    border-style:solid ;
    border-color: grey;
-   background: rgb(178, 227, 241);
+   background: rgb(206, 235, 243);
    padding: 5px;
    margin: 5px;
-  /* display: flexbox; */
 }
 th {
    color: darkred;
    color: var(--accent-color);
-   background-color: rgb(184, 242, 238);
+   background-color: rgb(209, 244, 242);
    font-size:larger;
    margin: 10px 10px;
    text-shadow: 1px 1px 1px gray; 
@@ -55,9 +42,9 @@ th {
 }
 
 td:hover {
-   font-weight: 300;
+   font-weight: 200;
    background-color: var(--accent-dark-color);   
-   font-size: 120%;
+   font-size: 110%;
    font-weight: bold;
 } 
 a:hover {
@@ -69,19 +56,9 @@ a:hover {
    padding: 10px;
    border-radius: 4px;
 }
-#BackToMain {
-   margin-top: 15px;
-   margin-left: 30px;
-   /*color: rgb(0, 140, 255);
-   text-decoration: none; 
-   font-family: sans-serif;*/
-   
-}
 
 p {
    margin-left: 30px;
-
-
 }
 
 a:link {
@@ -113,5 +90,33 @@ header h1 {
    margin: 10px 10px;
    text-shadow: 2px 2px 3px gray; 
 }
+p { margin-left: 30px;}
 
+form {
+   font-size: 110%;
+   border: 3px double;
+   border-radius: 10px;
+   background-color:  lavender;
+   width: 400px; 
+   margin-left: 30px;
+   /* margin: 0px auto; */
+   padding: 20px;
+}
+
+label {float: left;}
+/*input {float: right;} */
+
+#submit, #reset {
+    float:none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 120%;
+    text-shadow: 1px 1px 2px gray; 
+    box-shadow: 2px 2px 2px gray;
+
+}
+
+.rate, .currency {
+   text-align: right;
+}
 

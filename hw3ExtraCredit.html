@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW3 Extra Credit - Multiplication Game">
+<title>HW3 Extra Credit - Multiplication Game</title>
+<link rel="stylesheet" href="styles.css"> 
+<!--
+    Write a program that will help an elementary school student learn multiplication.
+Use Math.random to produce two one-digit integers (NO DECIMALS) from 0 to 9.
+With those two numbers, you should present a question such as: How much is X times Y? 
+where X is one of the random numbers and Y is the other random number
+The student then types the answer into an input box you will provide.
+Your program checks the student's answer.
+If it is correct, display the message "Very good!" in a text area or another part of the page, 
+and then shows a question to the user to see whether he/she wants to keep playing.
+If the user responds YES (click on a button that says YES), you will then generate another question
+If the user responds NO (click on a button that says NO), you will present a message such as 
+"Thanks for playing, see you next time" and you will NOT present another question.
+If the answer to the multiplication question is wrong, display the message "No. Please try again." 
+directly on the page in a textarea or another part of the page, and let the student try the same
+ question again repeatedly until the student finally gets it right.
+-->
+
+
+<style>
+/* CSS for tooltip */
+ 
+section { 
+    width: 400px; 
+ /*   margin: 20px auto; */
+    margin: 20px;
+    font-size: 110%;
+    background-color: lavender; 
+    padding: 15px;
+    border-style: solid;
+    border-radius: 5px;
+}
+section p {margin-left: 0px;}
+
+input[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin-right: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+}
+
+</style>
+<script>
+    var number1, number2;
+    function changeDiv(the_div,the_change)
+    {
+        var the_style = getStyleObject(the_div);
+        if (the_style != false) {
+            // console.log("display");
+            the_style.display = the_change;
+        }
+    }
+    function getStyleObject(objectId) {
+        if (document.getElementById && document.getElementById(objectId)) {
+           // console.log("object Id");
+            return document.getElementById(objectId).style;
+        } else if (document.all && document.all(objectId)) {
+            //  console("all");
+            return document.all(objectId).style;
+        } else {
+            return false;
+        }
+    }
+
+    // function to generate 2 random numbers from 0-9 and display the question on the webpage
+    function getRandomNumbers() {
+        number1 =  Math.floor(Math.random() * 10);
+        number2 =  Math.floor(Math.random() * 10);
+        document.getElementById("displayNumbers").innerHTML = "How much is " + number1 + " times " + number2 + "?";
+        document.getElementById("checkResult").innerHTML = "";
+        document.getElementById("inputValue").focus();
+    }
+
+    // function to check the answer and provide feedback
+    function checkValue(x) {
+        var correctValue, value;
+       // document.getElementById("checkResult").innerHTML = "What is " + number1 + " times " + number2 + "?";
+        x.style.background = "lightblue";
+        correctValue = number1 * number2;
+        value = document.getElementById("inputValue").value;
+        // console.log ("enter value: " +value);
+        
+        if (value == correctValue) {
+        //    "<span style='color: red; font-weight:bold; font-size: 1.5em;'>ERROR<br><span>"
+            document.getElementById("checkResult").innerHTML = "<span style='color: blue; font-size:1.25em; font-weight:bold'><em>Very Good!</em></span>";
+            // give option to play again
+            changeDiv("choiceToPlay","block");
+        }
+        else {
+            document.getElementById("checkResult").innerHTML = "Your answer " + value;
+            document.getElementById("checkResult").innerHTML += "<span style='color: red; font-size:1.25em; font-weight:bold'><em><br>No. Please try again</em></span>";
+            document.getElementById("inputValue").value ="";
+            document.getElementById("inputValue").focus();
+        }
+    }
+    function redoGame() {
+        //refresh the Game
+        getRandomNumbers(); 
+        document.getElementById("choiceToPlay").style.display="none";
+        document.getElementById("inputValue").value ="";
+        document.getElementById("inputValue").focus();
+    }
+    function goodByeDisplay() {
+        document.getElementById("mySection").style.display="none";
+        changeDiv("goodBye", "block");
+    }
+</script>
+</head>
+
+<body onload="getRandomNumbers()">
+    <header><h1>Homework 3 - Extra Credit  Multiplication Game</h1>
+    </header>
+    <p>
+        <a href="hw3.html">Back to Homework 3 main page</a>
+        <br><br>
+    </p>
+    <section id="mySection">
+    <p id="displayNumbers"></p>
+    
+    <label for="inputValue">Your answer: &nbsp;</label>
+    <input type="number" id="inputValue" onchange="checkValue(this)">
+    <br><br>
+  
+     <p id="checkResult"></p>
+   
+    <div id="choiceToPlay" style="margin-left:0px;  display:none">
+        <h3>Do you want to play again?</h3>
+        <input type="radio" name="choice"
+            onClick="redoGame();">&nbsp;Yes
+            <br>
+        <input type="radio" name="choice" 
+            onClick="goodByeDisplay();">&nbsp;No
+    </div>
+        
+    </section>
+    <section id="goodBye" style="margin-left:30px; display: none">
+        <h3>Thank you for playing<br>See you next time!</h3>
+    </section>
+
+</body>
+
+</html>

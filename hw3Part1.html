@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW3 Part 1 - Student Grades">
+<title>HW3 Part 1 - Student Grades</title>
+<link rel="stylesheet" href="styles.css">
+
+<!--
+Create a webpage that contains:
+the heading Student Grades,
+a form with input boxes for Homework Average, Mid-Term Exam Score, Final Exam Score, and Participation - 
+all those grades will be entered as integers
+a button for submitting the data and a button to clear the form
+a textarea (or div or paragraph element) to present final results and/or error message
+Create a script that:
+checks for valid input, i.e., that the input is between 0-100 and that, of course, the input are all numbers. 
+If all input is valid then calculate and display the student's final average according to the formula:
+final average = (.5 * hwAvg) + (.2 * midExam) + (.2 * finalExam) + (.1 * participation)
+in the output area, you will present the student's final average (rounded to an integer) and final letter grade using the following criteria: 
+If the student's final grade is 'D' or 'F' then display "Student must retake the course". 
+If the input of the user is invalid, you will present an error message and, of course, no result will be presented
+Note: The user should be able to reuse that same form for another student!
+-->
+<style>
+    .gradeInput {
+        float: right;
+    }
+    form {
+        width: 300px;
+    }
+
+</style>
+<script>
+    function res() {
+        // reset all the forms and result
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("results").innerHTML = "";
+    }
+    function process() {
+        var hA, mE, fE, p, n1, n2, n3, n4, finAvg, finGrade, numberStr;
+        //    n1= parseInt(document.forms["hw2pt2form"].elements["num1"].value);
+        hA = parseInt(document.getElementById("hwAvg").value);
+        mE = parseInt(document.getElementById("midExam").value);
+        fE = parseInt(document.getElementById("finalExam").value);
+        p = parseInt(document.getElementById("participation").value);
+        console.log("hwAvg: " + hA + "  mid Exam:"+ mE + "  final Exam: " + fE + " participation: " +p );
+
+        //check for input type, display error message for non number in the input boxes
+        if (isNaN(hA) || isNaN(mE) || isNaN(fE) || isNaN(p)) {          
+            //display error message in textarea, clear the area after every click
+            numberStr ="";
+            numberStr += 'ERROR\nInput is not a number';
+            document.getElementById("result").innerHTML = (numberStr);
+
+            //display error message in the error paragraph area
+            if (isNaN(hA)) { n1 = hA + "<br>&nbsp;&nbsp;&nbsp;<span style='color: red; font-weight:bold;'>  Not A valid Number</span>"; }
+                else { n1 = hA }
+            if (isNaN(mE)) { n2 = mE + "<br>&nbsp;&nbsp;&nbsp;<span style='color: red; font-weight:bold;'>  Not A valid Number</span>"; }
+                else { n2 = mE }
+            if (isNaN(fE)) { n3 = fE + "<br>&nbsp;&nbsp;&nbsp;<span style='color: red; font-weight:bold;'>  Not A valid Number</span>"; }
+                else { n3 = fE }
+            if (isNaN(p)) { n4 = p + "<br>&nbsp;&nbsp;&nbsp;<span style='color: red; font-weight:bold;'>  Not A valid Number</span>"; }
+                else { n4 = p }
+            document.getElementById("results").innerHTML = "";
+            document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1em;'>ERROR<br><span>";
+            document.getElementById("results").innerHTML += "Homework Average: " + n1 + "<br>";
+            document.getElementById("results").innerHTML += "Midterm Exam: " + n2 + "<br>";
+            document.getElementById("results").innerHTML += "Final Exam: " + n3 + "<br>";
+            document.getElementById("results").innerHTML += "Participation: " + n4 + "<br>";
+        }
+        else {
+          //  console.log ("is valid number" +hA +" mE:" + mE + "  fE:" + fE);
+            document.getElementById("results").innerHTML = "";
+            // check input grade must be between 0 and 100
+            if (hA >=0 && hA <=100 && mE >=0 && mE <=100 && fE >=0 && fE <=100 && p>=0 && p<=100) {
+                finAvg = (.5 * hA) + (.2 * mE) + (.2 * fE) + (.1 * p);
+                // final Grade
+                
+                if (finAvg >= 90){
+                    finGrade = "A";
+                } else if (finAvg >= 80) {
+                    finGrade = "B";
+                } else if (finAvg >= 70) {
+                    finGrade = "C";
+                } else if (finAvg >= 60) {
+                    finGrade = "D";
+                    document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1em;'>Student must retake the course<span>";
+                } else {
+                    finGrade = "F";             
+                    document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1em;'>Student must retake the course<span>";
+                }
+                numberStr = "";
+                numberStr = "The final Average was " + parseInt(finAvg);
+                numberStr += '\nThe final Grade was ' + finGrade;
+
+                //display result in textarea
+                document.getElementById("result").value = (numberStr);
+            }
+            else {
+                document.getElementById("result").value = "";
+                document.getElementById("results").innerHTML = "";
+                document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1em;'>Grade must be between 0 & 100<span>";
+                
+            }  
+    }
+    }
+</script>
+</head>
+<body>
+    <header><h1>Homework 3 - Part 1 Student Grade</h1></header>
+    <p>
+    <a href="hw3.html">Back to Homework 3 main page</a>
+    <br><br>
+    Calculate and display the student's final average according to the formula:<br>
+    Homework Average:  50%<br>
+    Midterm Exam:&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; 20%<br>
+    Final Exam: &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   20%<br>
+    Participation: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  10%<br><br>
+
+    Enter the scores between 0 & 100
+    </p>
+
+    <form name="hw3pt1form" >
+            <label for="hwAvg">Homework Average: </label>
+            <input type="number" id="hwAvg" min="0" max="100" class="gradeInput">
+            <br><br>
+            <label for="midExam">Mid-term Exam Score: </label>
+            <input type="number" id="midExam" min="0" max="100" class="gradeInput">
+            <br><br>
+            <label for="finalExam">Final Exam Score: </label>
+            <input type="number" id="finalExam" min="0" max="100" class="gradeInput">
+            <br><br>
+            <label for="participation">Participation: </label>
+            <input type="number" id="participation" min="0" max="100" class="gradeInput">
+            <br><br>
+        <!-- used type=button for submit-->
+        <input type="button" onclick="process()"  id="submit" value="SUBMIT">
+
+       &nbsp;     &nbsp;          &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;    &nbsp;     &nbsp;
+        <input type="reset"  onclick="res()" id="reset" value="RESET">
+        <p>
+        <label for="result">Result:  </label>&nbsp;     &nbsp;<textarea id="result" rows="4" cols="25" readonly></textarea><br>
+        </p>
+        <p id="results"></p>
+    </form>
+
+
+
+ </body>
+ </html>

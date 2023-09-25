@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="HW2 Part 1">
-    <title>HW2 Part 1</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>HW2 Extra Credit</title>
+    <link rel="stylesheet" href="styles.css"> 
 <!--
     This web page should have a script that:
 The user will input an amount in U.S. dollars (see the last box shown in the table above)
@@ -15,61 +15,100 @@ TIP: The cells of the column Value should have the readonly attribute to not all
 For example: if the user types 10 in the U.S. dollars input field, in the third column as shown in the table below (based on the proposed layout of the page) 
 - notice that the results do not have more than 2 decimal places and are aligned to the right:
 -->
+    <script>
+        function checkValue() {
+            const userinput = document.getElementById("USamount");
 
-    <style>
-        input:hover {
-        background-color: lavenderblush;   
+            const rate = document.getElementsByClassName("rate");
+            const currency = document.getElementsByClassName("currency");
+            const message = document.getElementById("message");
+            document.getElementById("USamt").value = userinput.value;
+
+            for (let x = 0; x < rate.length; x++) {
+                if (userinput.value && !isNaN(+userinput.value)) {
+                    exchangedCurrency = +rate[x].innerHTML * +userinput.value
+                    currency[x].innerHTML = parseFloat(exchangedCurrency).toFixed(2)
+                }
+                else {
+                    if (userinput.value.length === 0) {
+                        message.innerHTML = ""
+                    }
+                    else {
+                        message.innerHTML = "Please input a valid amount"
+                        break
+                    }
+                }
+            }
         }
-        table td:nth-child(2) { text-align: end; }
-        table td:nth-child(3) { text-align: end; }
-    </style>
-   <script>
-    function convert() {
-        var dollar, euroConvert, euroRate, canConvert, canRate, hkConvert, hkRate, japConvert, japRate, mexConvert, mexRate;
-        euroRate = 0.84;
-        canRate = 1.23;
-        hkRate = 7.76;
-        japRate = 110.80;
-        mexRate = 19.82;
+        function convert() {
+            var dollar, euroConvert, euroRate, canConvert, canRate, hkConvert, hkRate, japConvert, japRate, mexConvert, mexRate;
+            euroRate = 0.84;
+            canRate = 1.23;
+            hkRate = 7.76;
+            japRate = 110.80;
+            mexRate = 19.82;
 
-        dollar = parseFloat(document.getElementById("USamt").value);
+            dollar = parseFloat(document.getElementById("USamt").value);
 
-        euroConvert = dollar * euroRate;
-        canConvert = dollar * canRate;
-        hkConvert = dollar * hkRate;
-        japConvert = dollar * japRate;
-        mexConvert = dollar * mexRate;
+            euroConvert = dollar * euroRate;
+            canConvert = dollar * canRate;
+            hkConvert = dollar * hkRate;
+            japConvert = dollar * japRate;
+            mexConvert = dollar * mexRate;
 
-        document.getElementById("USamount").innerHTML = parseFloat(dollar).toFixed(2);
-        document.getElementById("EuroConvert").innerHTML = parseFloat(euroConvert).toFixed(2);
-        document.getElementById("CanadianConvert").innerHTML = parseFloat(canConvert).toFixed(2);
-        document.getElementById("HongKongConvert").innerHTML = parseFloat(hkConvert).toFixed(2);
-        document.getElementById("JapaneseConvert").innerHTML = parseFloat(japConvert).toFixed(2);
-        document.getElementById("MexicanConvert").innerHTML = parseFloat(mexConvert).toFixed(2);
-    }
-    
-</script>
+            document.getElementById("USamount").value = dollar;
+
+            document.getElementById("EuroConvert").innerHTML = parseFloat(euroConvert).toFixed(2);
+            document.getElementById("CanadianConvert").innerHTML = parseFloat(canConvert).toFixed(2);
+            document.getElementById("HongKongConvert").innerHTML = parseFloat(hkConvert).toFixed(2);
+            document.getElementById("JapaneseConvert").innerHTML = parseFloat(japConvert).toFixed(2);
+            document.getElementById("MexicanConvert").innerHTML = parseFloat(mexConvert).toFixed(2);
+        }
+        
+    </script>
 </head>
 <body>
     <header><h1>Homework 2 - Extra Credit</h1></header>
     <p>
-    <a href="hw2.html">Back to Homework 2 main page</a>
-
-
-    <br><br></p>
- 
-
+        <a href="hw2.html">Back to Homework 2 main page</a>
+        <br><br><br>
         <label for="USamt">Enter Amount of US Dollars </label><input type="number" id="USamt">
         <input type="button" value="Convert" onClick="convert()">
+    </p>
         <table>
-            <tr><th>Currency</th><th>Rate</th><th>Value</th></tr>
-            <tr><td>Euro</td><td >0.84</td><td id="EuroConvert" ></td></tr>
-            <tr><td>Canadian Dollar</td><td >1.23</td><td id="CanadianConvert" ></td></tr>
-            <tr><td>Hong Kong Dollar</td><td class="currency">7.76</td><td id="HongKongConvert" ></td></tr>
-            <tr><td>Japanese Yen</td><td class="currency">110.80</td><td id="JapaneseConvert" ></td></tr>
-            <tr><td>Mexican Peso</td><td class="currency">19.82</td><td id="MexicanConvert" ></td></tr>
-            <tr><td colspan="2" style='font-size:1.5em; color: red;'>Amount of US Dollars</td>
-            <td id="USamount" ></td>
+            <tr>
+                <th>Currency</th>
+                <th>Rate</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Euro</td>
+                <td class="rate" >0.84</td>
+                <td class="currency" id="EuroConvert" ></td>
+            </tr>
+            <tr>
+                <td>Canadian Dollar</td>
+                <td class="rate">1.23</td>
+                <td class="currency" id="CanadianConvert" ></td>
+            </tr>
+            <tr>
+                <td>Hong Kong Dollar</td>
+                <td class="rate">7.76</td>
+                <td class="currency" id="HongKongConvert" ></td>
+            </tr>
+            <tr>
+                <td>Japanese Yen</td>
+                <td class="rate">110.80</td>
+                <td class="currency" id="JapaneseConvert" ></td>
+            </tr>
+            <tr>
+                <td>Mexican Peso</td>
+                <td class="rate">19.82</td>
+                <td class="currency" id="MexicanConvert" ></td>
+            </tr>
+            <tr>
+                <td colspan="2" style='font-size:1.5em; color: red;'>Amount of US Dollars</td>
+                <td><input type="number" id="USamount" onkeyup="checkValue()"></td>
             </tr>
         </table>
     </body>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW3 Part 2 - Weekly Earning">
+<title>HW3 Part 2 - Weekly Earning</title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+    p { margin-left: 0}
+
+    /* old table is no longer used 
+    table tr td[data-rel='$'] {
+        text-align: right;
+    }
+    td:nth-child(3) {
+        text-align: center;
+    }
+    tr:last-child {
+        font-size:larger;
+        font-weight: bold;
+        color:blue;
+    }
+    input[type='number']{
+    width: 50px;
+} 
+    */
+    .grid-container {
+        display: grid;
+        column-gap: 10px;
+        grid-template-columns: auto auto auto auto;
+        background-color: #c2d4e3;
+        padding: 10px;
+        color: black;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+    }
+    .grid-item {
+        /*
+        background-color: rgba(255, 255, 255, 0.8);     
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        */
+        text-align: center;
+        margin-top:3px;
+    }
+    .currency {
+        margin-top: 3px;
+    }
+
+    .grid-totalRow {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        font-weight:bold;
+        padding: 3px;
+    }
+
+
+</style>
+
+<!--
+Create a webpage that calculate:
+Weekly earning.
+A large company pays its salespeople on a commission basis. 
+The salespeople receive $250 per week, plus 9% of their gross sales for the week.
+
+For example, a salesperson who sells $5000 worth of merchandise in a week, will receives $250 PLUS 9% of $5000, which will be a total of $700. 
+You have been supplied with a list of the items that can be sold by each salesperson.
+-->
+
+<script>
+    const rate1 = 20.99;
+    const rate2 = 12.75;
+    const rate3 = 9.95;
+    const rate4 = 35.89;
+ 
+    function displayPrice() {
+        console.log ("display price");
+        document.getElementById("item1Price").innerHTML += rate1;
+        document.getElementById("item2Price").innerHTML += rate2;
+        document.getElementById("item3Price").innerHTML += rate3;
+        document.getElementById("item4Price").innerHTML += rate4;
+    }
+    function res() {
+        // reset all the forms and result
+
+        console.log("reset");
+        document.getElementById("results").innerHTML = "";
+    }
+    function process() {
+        var qty1, qty2, qty3, qty4, subTotal, weekEarning;
+        //    n1= parseInt(document.forms["hw2pt2form"].elements["num1"].value);
+        qty1 = parseInt(document.getElementById("item1").value);
+        qty2 = parseInt(document.getElementById("item2").value);
+        qty3 = parseInt(document.getElementById("item3").value);
+        qty4 = parseInt(document.getElementById("item4").value);
+           console.log("input: " +qty1 +qty2+qty3+qty4);
+    
+        //check for input type, display error message for non number in the input boxes
+        if (isNaN(qty1) || isNaN(qty2) || isNaN(qty3) || isNaN(qty4) ) {          
+            //display error message in the error paragraph area
+            if (isNaN(qty1)) { n1 = qty1 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n1 = qty1 }
+            if (isNaN(qty2)) { n2 = qty2 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n2 = qty2 }
+            if (isNaN(qty3)) { n3 = qty3 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n3 = qty3 }
+            if (isNaN(qty4)) { n4 = qty4 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+                else { n4 = qty4 }
+            document.getElementById("results").innerHTML = "";
+            document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1.5em;'>ERROR<br><span>";
+            document.getElementById("results").innerHTML += "Item 1: " + n1 + "<br>";
+            document.getElementById("results").innerHTML += "Item 2: " + n2 + "<br>";
+            document.getElementById("results").innerHTML += "Item 3: " + n3 + "<br>";
+            document.getElementById("results").innerHTML += "Item 4: " + n4 + "<br><br>";
+        }
+        else {
+            //calculate subTotal
+            console.log("rate:" +rate1);
+            subTotal = qty1 * rate1 + qty2 * rate2 + qty3 * rate3 + qty4 * rate4;
+            weekEarning = 250 + 0.09 * subTotal;
+           console.log ("result: " + subTotal +"and " +weekEarning);
+
+            //to tabulate table   use innerHTML, but to pass input  use value
+
+            document.getElementById("item1Qty").value = qty1;
+            document.getElementById("item2Qty").value = qty2;
+            document.getElementById("item3Qty").value = qty3;
+            document.getElementById("item4Qty").value = qty4;
+            
+            //document.getElementById("item1Total").value = "$" + (qty1*rate1).toFixed(2);
+            document.getElementById("item1Total").value = (qty1*rate1).toFixed(2);
+            document.getElementById("item2Total").value = (qty2*rate2).toFixed(2);
+            document.getElementById("item3Total").value = (qty3*rate3).toFixed(2);
+            document.getElementById("item4Total").value = (qty4*rate4).toFixed(2);
+            document.getElementById("totalAmtSold").value = subTotal.toFixed(2);
+            document.getElementById("totalWkEarning").value = weekEarning.toFixed(2);
+        } 
+            //display result in textarea
+        //    document.getElementById("result").value = (numberStr);
+    }  
+    
+</script>
+</head>
+<body onload="displayPrice()">
+    <header><h1>Homework 3 - Part 2 Weekly Earning</h1></header>
+    <p>
+    <a href="hw3.html">Back to Homework 3 main page</a>
+    <br><br>
+    </p>
+
+    <form name="hw3pt2form"  >
+        <label for="name">Seller's Name: &nbsp;</label>
+        <input type="text" id="name" name="name" autocomplete="off">
+        <br><br>For each item type the quantity sold by the seller:<br><br>
+        <label for="item1">Item 1: &nbsp;</label>
+        <input type="number" id="item1" min="0" max="100" name="item1">
+         <br>
+        <label for="item2">Item 2: &nbsp;</label>
+        <input type="number" id="item2" min="0" max="100" name="item2">
+        <br>
+        <label for="item3">Item 3: &nbsp;</label>
+        <input type="number" id="item3" min="0" max="100" name="item3">
+        <br>
+        <label for="item4">Item 4: &nbsp;</label>
+        <input type="number" id="item4" min="0" max="100" name="item4">
+
+        <br><br>
+        <!-- used type=button for submit-->
+        <input type="button" onclick="process()"  id="submit" value="SUBMIT" name="submit">
+
+       &nbsp;     &nbsp;          &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;    &nbsp;     &nbsp;
+        <input type="reset"  onclick="res()" id="reset" value="RESET" name="reset">
+
+        <!-- display error message -->
+        <p id="results"></p>
+
+        <!-- use of CSS grid to display result in table like manner-->
+        <div class="grid-container">
+            <div class="grid-item" style="font-weight:bold;">Item #</div>
+            <div class="grid-item" style="font-weight:bold;">Price</div>
+            <div class="grid-item" style="font-weight:bold;">Qty total</div>
+            <div class="grid-item" style="font-weight:bold;">Total $</div>
+
+            <div class="grid-item">1</div>
+            <div class="currency" id="item1Price">$</div>
+            <div class="grid-item" ><input type="number" id="item1Qty" readonly min="0" max="100"></div>
+            <div><input type="number" id="item1Total" class="currency" readonly min="0" max="9999999999"></div>
+
+            <div class="grid-item">2</div>
+            <div class="currency" id="item2Price">$</div>
+            <div class="grid-item" ><input type="number" id="item2Qty" readonly min="0" max="100" ></div>
+            <div ><input type="number" id="item2Total" class="currency" readonly min="0" max="9999999999"></div>
+
+            <div class="grid-item">3</div>
+            <div class="currency" id="item3Price">$</div>
+            <div class="grid-item"><input type="number" id="item3Qty" readonly min="0" max="100"></div>
+            <div><input type="number" id="item3Total" class="currency" readonly min="0" max="9999999999"></div>
+            
+            <div class="grid-item">4</div>
+            <div class="currency" id="item4Price">$</div>
+            <div class="grid-item" ><input type="number" id="item4Qty" readonly min="0" max="100"></div>
+            <div><input type="number" id="item4Total" class="currency" readonly min="0" max="9999999999"></div>
+
+            <div class="grid-totalRow">Total Amount Sold</div>
+            <div class="currency"><input type="number" id="totalAmtSold" class="currency" readonly min="0" max="9999999999"></div>
+
+            <div class="grid-totalRow">Total Weekly Earnings</div>
+            <div class="currency"><input type="number" id="totalWkEarning" class="currency" readonly min="0" max="999999"
+                style="font-weight:bolder; font-size: 110%; color:blue; background-color:rgb(223, 255, 127)"
+                 ></div>
+
+        </div>
+
+    </form>
+    <!-- old: use of table to tabulate result 
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty Sold</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td id="item1Price" data-rel="$">$20.99</td>
+            <td id="item1Qty" ></td>
+            <td id="item1Total"  data-rel="$"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td id="item2Price" data-rel="$">$12.75</td>
+            <td id="item2Qty" ></td>
+            <td id="item2Total"  data-rel="$"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td id="item3Price" data-rel="$">$9.95</td>
+            <td id="item3Qty" ></td>
+            <td id="item3Total"  data-rel="$"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td id="item4Price" data-rel="$">$35.89</td>
+            <td id="item4Qty" ></td>
+            <td id="item4Total"  data-rel="$"></td>
+        </tr>
+        <tr>
+            <td colspan="3">Total Amount Sold</td>
+            <td id="totalAmtSold" data-rel="$" ></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="font-size:1em;">Total Weekly Earning</td>
+            <td id="totalWkEarning"  data-rel="$"></td>
+        </tr>
+    </table>
+    -->
+ 
+
+
+ </body>
+ </html>
