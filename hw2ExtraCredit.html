@@ -16,9 +16,9 @@ For example: if the user types 10 in the U.S. dollars input field, in the third 
 - notice that the results do not have more than 2 decimal places and are aligned to the right:
 -->
     <script>
+        //this keyup function is taken from https://scholarbunnie.github.io/, added after graded   
         function checkValue() {
             const userinput = document.getElementById("USamount");
-
             const rate = document.getElementsByClassName("rate");
             const currency = document.getElementsByClassName("currency");
             const message = document.getElementById("message");
@@ -26,20 +26,21 @@ For example: if the user types 10 in the U.S. dollars input field, in the third 
 
             for (let x = 0; x < rate.length; x++) {
                 if (userinput.value && !isNaN(+userinput.value)) {
-                    exchangedCurrency = +rate[x].innerHTML * +userinput.value
-                    currency[x].innerHTML = parseFloat(exchangedCurrency).toFixed(2)
+                    exchangedCurrency = +rate[x].innerHTML * +userinput.value;
+                    currency[x].innerHTML = parseFloat(exchangedCurrency).toFixed(2);
                 }
                 else {
                     if (userinput.value.length === 0) {
-                        message.innerHTML = ""
+                        message.innerHTML = "";
                     }
                     else {
-                        message.innerHTML = "Please input a valid amount"
-                        break
+                        message.innerHTML = "Please input a valid amount";
+                        break;
                     }
                 }
             }
         }
+        // this was the original design submitted for grade
         function convert() {
             var dollar, euroConvert, euroRate, canConvert, canRate, hkConvert, hkRate, japConvert, japRate, mexConvert, mexRate;
             euroRate = 0.84;
@@ -72,8 +73,8 @@ For example: if the user types 10 in the U.S. dollars input field, in the third 
     <p>
         <a href="hw2.html">Back to Homework 2 main page</a>
         <br><br><br>
-        <label for="USamt">Enter Amount of US Dollars </label><input type="number" id="USamt">
-        <input type="button" value="Convert" onClick="convert()">
+        <label for="USamt">Enter Amount of US Dollars </label>:&nbsp&nbsp<input type="number" id="USamt">
+        <input type="button" value="Convert" onClick="convert()" name="Convert">
     </p>
         <table>
             <tr>
@@ -108,7 +109,7 @@ For example: if the user types 10 in the U.S. dollars input field, in the third 
             </tr>
             <tr>
                 <td colspan="2" style='font-size:1.5em; color: red;'>Amount of US Dollars</td>
-                <td><input type="number" id="USamount" onkeyup="checkValue()"></td>
+                <td><input type="number" id="USamount" onkeyup="checkValue()" name="USamount"></td>
             </tr>
         </table>
     </body>
