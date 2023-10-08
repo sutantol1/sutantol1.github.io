@@ -1,3 +1,4 @@
+/* updated 9/24/23 */
 :root {
    --accent-color: rgba(128, 56, 176, 0.76);
    --accent-dark-color: #cadcf5;
@@ -9,6 +10,8 @@ body {
    background-color: #ecf6f0;
    font-family: Helvetica, sans-serif;
    color: var(--font-color);
+   width: 80%;
+   margin: 0px auto;
 }
 
 main {
@@ -24,12 +27,11 @@ table  td {
    border-radius: 5px;
    border-style:solid ;
    border-color: grey;
-   background: rgb(206, 235, 243);
+   /*background: rgb(206, 235, 243);*/
    padding: 5px;
    margin: 5px;
 }
 th {
-   color: darkred;
    color: var(--accent-color);
    background-color: rgb(209, 244, 242);
    font-size:larger;
@@ -39,6 +41,9 @@ th {
    border-color: grey;
    border-radius: 5px;
    padding: 10px;
+}
+tr:nth-child(even) {
+   background: rgb(193, 218, 218);
 }
 
 td:hover {
@@ -55,10 +60,6 @@ a:hover {
 
    padding: 10px;
    border-radius: 4px;
-}
-
-p {
-   margin-left: 30px;
 }
 
 a:link {
@@ -92,6 +93,12 @@ header h1 {
 }
 p { margin-left: 30px;}
 
+div {
+   width: 315px; 
+   margin: 0 auto; 
+   text-align:center;
+} 
+
 form {
    font-size: 110%;
    border: 3px double;
@@ -103,8 +110,11 @@ form {
    padding: 20px;
 }
 
+input:focus {
+   background-color: lightblue;
+}
+
 label {float: left;}
-/*input {float: right;} */
 
 #submit, #reset {
     float:none;
@@ -113,10 +123,20 @@ label {float: left;}
     font-size: 120%;
     text-shadow: 1px 1px 2px gray; 
     box-shadow: 2px 2px 2px gray;
-
 }
 
 .rate, .currency {
    text-align: right;
 }
 
+#error {
+   color: red;
+   font-weight: bold;
+   font-style: italic;
+}
+
+#result {
+   color: navy;
+   font-weight: bold;
+   font-style: normal;
+}
