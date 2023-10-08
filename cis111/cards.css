@@ -1,0 +1,78 @@
+.table {
+   width: 400px;
+   height: 300px;
+
+   /* Part of your solution goes here */
+   background: linear-gradient(forestgreen, darkgreen);
+   
+}
+
+.cardRed {
+   color: red;
+}
+
+.cardBlack {
+   color: black;
+}
+
+.card {
+   background-color: whitesmoke;
+   border: 1px solid black;         
+   width: 100px;
+   height: 160px;
+   line-height: 160px;
+   text-align: center;
+   font-size: 80px;
+   border-radius: 5px;
+   box-shadow: black 3px 3px;
+   /* Part of your solution goes here 
+    Add a border-radius property of 5px and a black box-shadow property with 3px x and y offsets to the .card rule.*/
+
+}      
+
+.cardTop {
+   /* Part of your solution goes here Add absolute positioning to the .cardTop rule, and position the card 150px from the left and 100px from the top of the container edge.
+    * Add a z-index property to the .cardTop and .cardBottom rules to make the top card appear on top.*/
+    position: absolute;
+    left: 150px;
+    top: 100px;
+    z-index: 3;
+}
+
+.cardBottom {
+   /* Part of your solution goes here Add absolute positioning to the .cardBottom rule, and position the card 240px from the left and 120px from the top of the container edge.*/
+   position: absolute;
+   left: 240px;
+   top: 120px;
+    z-index: 2;
+}
+
+.heart {
+   color: red;
+   font-size: 28px; 
+   width: 30px;
+   height: 30px;  
+   line-height: 30px;
+}
+
+.spade {
+   color: black;
+   font-size: 36px; 
+   width: 30px;
+   height: 30px;  
+   line-height: 30px;
+}
+
+.topLeft {
+   /* Part of your solution goes here Add absolute positioning to the .topLeft selector to place the symbol 2px from the left and top edges of the card.*/
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.bottomRight {
+   /* Part of your solution goes here */
+   position: absolute;
+   bottom: 2px;
+   right: 2px;
+}

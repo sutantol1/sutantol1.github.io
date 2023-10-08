@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Project Reviews - Add Review</title>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <header>
+         <h1>Project Reviews</h1>
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+                <li><a href="project.html">Project</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+      </header>
+       <div id="project">
+           <table><strong>Here are some of the projects we did during the semester: </strong>
+               <tr><th>LAB</th><th>Project Name</th><th>Description</th>
+               </tr>
+               <tr><td>2.12</td>
+                   <td><a target="blank" href="2_12PhotoGalleryTable.html">Photo Gallery Table (HTML)</a></td>
+                   <td>create a webpage with a table that displays a photo gallery</td>
+               </tr>
+                <tr><td>3.12</td>
+                    <td><a target="blank" href="3_12_StartingLineUpHTML.html">Starting Line Up (HTML)</a></td>
+                    <td>Add a form to index.html that allows the user to select a team's starting lineup for a game</td> 
+               </tr>
+               <tr><td>4.10</td>
+                   <td><a target="blank" href="4_10_SleepRecommendationCSS.html">Sleep Recommendation (CSS)</a></td>
+                   <td>Modify the HTML file's embedded stylesheet to produce the webpage</td>
+               </tr>
+                <tr><td>4.11</td>
+                  <td><a target="_blank" href="bestgames.html" >Best-selling Video Games Table (CSS)</a></td>
+                  <td>Modify styles.css so the provided HTML produces the webpage</td>
+               </tr>
+               <tr><td>4.12</td>
+                  <td><a target="_blank" href="rate.html" >Style the form with advanced selectors (CSS)</a></td>
+                  <td>Modify the HTML file's embedded stylesheet to produce the webpage</td>
+               </tr>
+               <tr><td>5.5</td>
+                  <td><a target="_blank" href="restaurant.html" >Styled Restaurant Reviews (CSS)</a></td>
+                  <td>Modify styles.css so the provided HTML produces the webpage</td>
+               </tr>
+               <tr>
+                  <td>5.7</td>
+                  <td><a target="_blank" href="cards.html">Positioning the Playing Cards (CSS)</a></td>
+                  <td>Modify styles.css file so the webpage displays two playing cards on a green background</td>
+               </tr>
+               <tr>
+                  <td>5.8</td>
+                  <td><a target="blank" href="oatmeal_cookies.html">Recipe with Flexbox (CSS)</a></td>
+                  <td>Modify styles.css file so the webpage displays two playing cards on a green background</td>
+               </tr>
+               <tr>
+                  <td>11.4</td>
+                  <td><a target="blank" href="convert.html">Temperature Converter (JavaScript)</a></td>
+                  <td>The user may type a temperature in either the Celsius or Fahrenheit textbox and press Convert to convert the temperature. An image displays based on the converted temperature.</td>
+               </tr>
+               <tr>
+                  <td>11.5</td>
+                  <td><a target="blank" href="quote.html">Quote web API (XMLHttpRequest)</a></td>
+                  <td>Use a web API to fetch and display quotes on a selected topic</td>
+               </tr>
+            </table>
+
+        
+        </div>
+ <main>   
+         <h2>Add Review</h2>
+         <form method="post" action="https://wp.zybooks.com/form-viewer.php">
+            <p>
+               <label for="name">Name:</label>
+               <input type="text" id="name" name="name" required>
+            </p>
+            <p>
+               <label for="Project">Project</label>
+               <select id="proect" name="project" required>
+                  <option value="">Choose one...</option>
+                  <option>Charlie's Pizza</option>
+                  <option>El Paraiso</option>
+                  <option>Greek House</option>
+                  <option>Main Street Cafe</option>
+                  <option>Whilma's Filipino Restaurant</option>
+               </select>
+            </p>
+            <p>
+               <label for="visit-date">Date of visit:</label>
+               <input type="date" name="visit-date" id="visit-date" required>
+            </p>
+            <p>
+               <label for="rating">Rating?</label>
+               <input type="number" id="rating" name="rating" min="1" max="5" step="0.5" value="5" required>
+            </p>
+            <p>
+               <label for="details">Details?</label>
+               <textarea id="details" name="details" rows="5" cols="40" required></textarea>
+            </p>
+            <button>Submit</button>
+         </form>
+      </main>
+      <footer>
+         <p>
+            &copy; 2023 Final Project
+         </p>
+      </footer>
+   </body>
+</html>
+
+</html>

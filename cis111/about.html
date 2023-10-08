@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="styles.css" rel="stylesheet">
+    <title>About Me</title>
+</head>
+<body>
+   <header>
+      <h1>About Me</h1><img src="about.jpg" alt="Linda Sutanto" width=100px float:flex >
+      <nav>
+         <ul>
+            <li><a href="index.html">Home</a></li>
+             <li><a href="project.html">Project</a></li>
+            <li><strong>About</strong></li>
+         </ul>
+      </nav>
+   </header>
+   
+       <div>
+         <h1 id="about">CLICK THE BUTTON BELOW TO CHANGE MY COLOR</h1>
+
+         <button id="brown-btn">BROWN</button>
+         <button id="purple-btn">PURPLE</button>
+        </div>
+          
+      <script>
+
+         let brownBtn = document.getElementById("brown-btn");
+         brownBtn.addEventListener("click", function() {
+            changeTextColor("brown");
+         });
+         
+         let purpleBtn = document.getElementById("purple-btn");
+         purpleBtn.addEventListener("click", function() {
+            changeTextColor("purple");
+         });         
+
+         function changeTextColor(newColor) {
+            let heading = document.getElementById("about");
+            heading.style.color = newColor;
+         }
+          /*javascript */
+
+      </script>
+
+
+      
+   <div>
+    <p id="author-name-and-date">Updated | July 28, 2023</p>
+
+    <p>Linda is a student of College of San Mateo.</p>
+    <p>This semester she is taking Web Programming class, hoping to refresh her knowledge of web building and programming.</p>
+   </div>
+
+    
+    
+    <div>
+    <p>Languages:</p>
+    <ul>
+        <li>English</li>
+        <li>Indonesian</li>
+        <li>Mandarin Chinese</li>
+        <li>Spanish (currently learning)</li>
+    </ul>
+    <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+    </div>
+   
+<!--
+    <script>
+    alert( 'Hello, world!' );
+     // Display the prompt dialog box
+let name = prompt("What is your name?");
+
+// Output to the console
+console.log("Hello, " + name + "!");
+  </script>
+    <script src="https://example.com/interactive_content.js"></script>
+
+<script type="text/javascript">
+  alert("Hello, World!");
+</script>
+-->
+
+
+    
+</html>
