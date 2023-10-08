@@ -47,11 +47,11 @@ instead, you should present an error message in the textarea
             document.getElementById("result").innerHTML = (numberStr);
 
             //display error message in the error paragraph area
-            if (isNaN(n1)) { n1 = number1 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+            if (isNaN(n1)) { n1 = number1 + "<span style='color: red; font-weight:bold; font-size: 1em;'>  Not A valid Number</span>"; }
                 else { n1 = number1 }
-            if (isNaN(n2)) { n2 = number2 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+            if (isNaN(n2)) { n2 = number2 + "<span style='color: red; font-weight:bold; font-size: 1em;'>  Not A valid Number</span>"; }
                 else { n2 = number2 }
-            if (isNaN(n3)) { n3 = number3 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
+            if (isNaN(n3)) { n3 = number3 + "<span style='color: red; font-weight:bold; font-size: 1em;'>  Not A valid Number</span>"; }
                 else { n3 = number3 }
             document.getElementById("error").innerHTML = "";
             document.getElementById("error").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1.5em;'>ERROR<br><span>";
@@ -102,9 +102,9 @@ instead, you should present an error message in the textarea
         &nbsp; &nbsp; &nbsp;
         <input type="reset"  onclick="res()" id="reset" value="RESET" name="reset"><br><br>
         <label for="result">Result:</label>&nbsp;&nbsp;<textarea id="result" rows="6" cols="25" readonly name="result"></textarea><br><br>
-
+        <div id="error"></div>
     </form>
-    <div id="error"></div>
+
 
  </body>
  </html>
