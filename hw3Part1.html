@@ -123,22 +123,22 @@ Note: The user should be able to reuse that same form for another student!
 
     <form name="hw3pt1form" >
             <label for="hwAvg">Homework Average: </label>
-            <input type="number" id="hwAvg" min="0" max="100" class="gradeInput">
+            <input type="number" id="hwAvg" min="0" max="100" class="gradeInput" name="hwAvg">
             <br><br>
             <label for="midExam">Mid-term Exam Score: </label>
-            <input type="number" id="midExam" min="0" max="100" class="gradeInput">
+            <input type="number" id="midExam" min="0" max="100" class="gradeInput" name="midExam">
             <br><br>
             <label for="finalExam">Final Exam Score: </label>
-            <input type="number" id="finalExam" min="0" max="100" class="gradeInput">
+            <input type="number" id="finalExam" min="0" max="100" class="gradeInput" name="finalExam">
             <br><br>
             <label for="participation">Participation: </label>
-            <input type="number" id="participation" min="0" max="100" class="gradeInput">
+            <input type="number" id="participation" min="0" max="100" class="gradeInput" name="participation">
             <br><br>
         <!-- used type=button for submit-->
         <input type="button" onclick="process()"  id="submit" value="SUBMIT">
 
        &nbsp;     &nbsp;          &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;    &nbsp;     &nbsp;
-        <input type="reset"  onclick="res()" id="reset" value="RESET">
+        <input type="reset"  onclick="res()" id="reset" value="RESET" name="reset">
         <p>
         <label for="result">Result:  </label>&nbsp;     &nbsp;<textarea id="result" rows="4" cols="25" readonly></textarea><br>
         </p>

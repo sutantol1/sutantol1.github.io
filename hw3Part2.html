@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-    p { margin-left: 0}
+
 
     /* old table is no longer used 
     table tr td[data-rel='$'] {
@@ -33,7 +33,9 @@
         padding: 10px;
         color: black;
         border: 1px solid rgba(0, 0, 0, 0.8);
+        
     }
+
     .grid-item {
         /*
         background-color: rgba(255, 255, 255, 0.8);     
@@ -50,9 +52,8 @@
         grid-column-start: 1;
         grid-column-end: 4;
         font-weight:bold;
-        padding: 3px;
+        padding: 7px; 
     }
-
 
 </style>
 
@@ -73,45 +74,57 @@ You have been supplied with a list of the items that can be sold by each salespe
     const rate4 = 35.89;
  
     function displayPrice() {
-        console.log ("display price");
         document.getElementById("item1Price").innerHTML += rate1;
         document.getElementById("item2Price").innerHTML += rate2;
         document.getElementById("item3Price").innerHTML += rate3;
         document.getElementById("item4Price").innerHTML += rate4;
     }
     function res() {
-        // reset all the forms and result
-
-        console.log("reset");
-        document.getElementById("results").innerHTML = "";
+        // reset all the forms and error
+        document.getElementById("error").innerHTML = "";
     }
+
     function process() {
         var qty1, qty2, qty3, qty4, subTotal, weekEarning;
+        // clear error message
+        document.getElementById("error").innerHTML = "";
+
         //    n1= parseInt(document.forms["hw2pt2form"].elements["num1"].value);
         qty1 = parseInt(document.getElementById("item1").value);
         qty2 = parseInt(document.getElementById("item2").value);
         qty3 = parseInt(document.getElementById("item3").value);
         qty4 = parseInt(document.getElementById("item4").value);
-           console.log("input: " +qty1 +qty2+qty3+qty4);
     
         //check for input type, display error message for non number in the input boxes
         if (isNaN(qty1) || isNaN(qty2) || isNaN(qty3) || isNaN(qty4) ) {          
             //display error message in the error paragraph area
-            if (isNaN(qty1)) { n1 = qty1 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
-                else { n1 = qty1 }
-            if (isNaN(qty2)) { n2 = qty2 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
-                else { n2 = qty2 }
-            if (isNaN(qty3)) { n3 = qty3 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
-                else { n3 = qty3 }
-            if (isNaN(qty4)) { n4 = qty4 + "<span style='color: red; font-weight:bold; font-size: 1.5em;'>  Not A valid Number</span>"; }
-                else { n4 = qty4 }
-            document.getElementById("results").innerHTML = "";
-            document.getElementById("results").innerHTML += "<span style='color: red; font-weight:bold; font-size: 1.5em;'>ERROR<br><span>";
-            document.getElementById("results").innerHTML += "Item 1: " + n1 + "<br>";
-            document.getElementById("results").innerHTML += "Item 2: " + n2 + "<br>";
-            document.getElementById("results").innerHTML += "Item 3: " + n3 + "<br>";
-            document.getElementById("results").innerHTML += "Item 4: " + n4 + "<br><br>";
+
+            if (isNaN(qty1)) { 
+                document.getElementById("error").style.setProperty("color", "red");
+                n1 = qty1 + "<span style='font-size: 1.25em;'>&nbsp  Not A valid Number</span>"; }
+                else { 
+                    n1 = qty1 }
+            if (isNaN(qty2)) { n2 = qty2 + "<span style='font-size: 1.25em;'>&nbsp  Not A valid Number</span>"; }
+                else { 
+                    n2 = qty2 }
+            if (isNaN(qty3)) { n3 = qty3 + "<span style='font-size: 1.25em;'>&nbsp  Not A valid Number</span>"; }
+                else { 
+                    n3 = qty3 }
+            if (isNaN(qty4)) { n4 = qty4 + "<span style='font-size: 1.25em;'>&nbsp  Not A valid Number</span>"; }
+                else { 
+                    n4 = qty4 }
+            
+
+            if (qty1 < 0 || qty2 < 0 || qty3 <0 || qty4 < 0) {
+
+            document.getElementById("error").innerHTML += "Quantity can't be negative<br>  Please enter valid number for all items<br><br></span>";
+            }
+            document.getElementById("error").innerHTML += "Item 1: " + n1 + "<br>";
+            document.getElementById("error").innerHTML += "Item 2: " + n2 + "<br>";
+            document.getElementById("error").innerHTML += "Item 3: " + n3 + "<br>";
+            document.getElementById("error").innerHTML += "Item 4: " + n4 + "<br><br>";
         }
+
         else {
             //calculate subTotal
             console.log("rate:" +rate1);
@@ -149,19 +162,19 @@ You have been supplied with a list of the items that can be sold by each salespe
 
     <form name="hw3pt2form"  >
         <label for="name">Seller's Name: &nbsp;</label>
-        <input type="text" id="name" name="name" autocomplete="off">
+        <input type="text" id="name" name="name" autocomplete="off" name="name">
         <br><br>For each item type the quantity sold by the seller:<br><br>
         <label for="item1">Item 1: &nbsp;</label>
-        <input type="number" id="item1" min="0" max="100" name="item1">
+        <input type="number" id="item1" min="0" max="100" name="item1" name="item1">
          <br>
         <label for="item2">Item 2: &nbsp;</label>
-        <input type="number" id="item2" min="0" max="100" name="item2">
+        <input type="number" id="item2" min="0" max="100" name="item2" name="item2">
         <br>
         <label for="item3">Item 3: &nbsp;</label>
-        <input type="number" id="item3" min="0" max="100" name="item3">
+        <input type="number" id="item3" min="0" max="100" name="item3" name="item3">
         <br>
         <label for="item4">Item 4: &nbsp;</label>
-        <input type="number" id="item4" min="0" max="100" name="item4">
+        <input type="number" id="item4" min="0" max="100" name="item4" name="item4">
 
         <br><br>
         <!-- used type=button for submit-->
@@ -171,7 +184,7 @@ You have been supplied with a list of the items that can be sold by each salespe
         <input type="reset"  onclick="res()" id="reset" value="RESET" name="reset">
 
         <!-- display error message -->
-        <p id="results"></p>
+        <p id="error"></p>
 
         <!-- use of CSS grid to display result in table like manner-->
         <div class="grid-container">
