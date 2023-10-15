@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="HW4 Part 1 - Loop ">
+  <title>HW4 Part 1 - Script using For, While statement</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript">
+    /*  using the for statement, that calculates the product and 
+    sum of every fourth integer from 5 to 25 inclusive and then displays the results, 
+    along with some accompanying text.
+    */
+    function forLoop() {
+      var product = 1;
+      var sum = 0;
+      var textProduct, textSum;
+
+      for (i = 5; i <= 25; i += 4) {
+        //   console.log(`i: ${i}`);
+        product *= i;
+        sum += i;
+        if (i == 5) {
+          textProduct = i;
+          textSum = i;
+        } else {
+          textProduct += " * " + i;
+          textSum += " + " + i;
+        }
+      }
+      document.getElementById("result").innerHTML = "For statement<br>";
+      document.getElementById("result").innerHTML += "Calculates the product and sum of every fourth integer from 5 to 25<br><br>";
+      document.getElementById("result").innerHTML += "Product of " + textProduct + " is " + product.toLocaleString();
+      document.getElementById("result").innerHTML += "<br>Sum of " + textSum + " is " + sum;
+    }
+    /*
+    using the while or do while statement, 
+    that calculates the product and sum of every third integer from 3 to 18 inclusive
+    */
+    function whileLoop() {
+      var j = 3, product = 1, sum = 0;
+      var textProduct = "", textSum = "";
+      while (j <= 18) {
+        product *= j;
+        sum += j;
+        if (j == 3) {
+          textProduct = j;
+          textSum = j;
+        } else {
+          textProduct += " * " + j;
+          textSum += " + " + j;
+        }
+        j += 3;
+      }
+      document.getElementById("result").innerHTML += "<br><br><br>While statement<br>";
+      document.getElementById("result").innerHTML += "Calculates the rpoduct and sum of every third integer from 3 to 18<br><br>";
+      document.getElementById("result").innerHTML += "Product of " + textProduct + " is " + product.toLocaleString();
+      document.getElementById("result").innerHTML += "<br>Sum of " + textSum + " is " + sum;
+    }
+  </script>
+
+</head>
+
+<body onload="forLoop(), whileLoop()">
+  <header>
+    <h1>HW4 Part 1 - For and While Statement</h1>
+  </header>
+  <p>
+    <a href="hw4.html">Back to Homework 4 main page</a>
+    <br><br>
+  </p>
+  <p id="result"></p>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW4 Extra Credit">
+<title>HW4 Extra Credit</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    pre {display:inline-block; text-align:left;}
+    label {float:none;}
+</style>
+<!-- 
+    HW4 Extra Credit:
+Create a webpage with:
+a heading
+a form with an input box that will allow the user to enter a number (integer), 
+a button to process the script, and a button to clear the form
+a separated div or paragraph element below the form where you will present the result
+You will build a script that:
+Will read the number typed by the user that should be between 2 and 10
+Based on that number, you will display a hollow square with that size constructed of asterisks.
+If the user entered an invalid number (not a number or outside the range of 2 to 10), 
+you should present an error message in the div or paragraph element below the form and 
+you should NOT present the square!
+If the user entered a valid number, you should present the hollow square in. the div or 
+paragraph element below the form
+-->
+<script>
+    function res() {
+        // reset all the forms and result
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("num1").focus();
+    }
+    function process() {
+        var number1, n1, row, textStr;
+        //    n1= parseInt(document.forms["hw2pt2form"].elements["num1"].value);
+        number1 = document.getElementById("num1").value;
+        
+        // console.log("process: " +number1 );
+        n1 = parseInt(number1);
+
+        //check for input type, display error message for non number in the input boxes
+        if (isNaN(n1) || n1 < 2 || n1 > 10) {    
+            document.getElementById("error").innerHTML = "";
+            document.getElementById("result").innerHTML = "";     
+            document.getElementById("num1").focus(); 
+            //display error message in the error paragraph area
+            if (isNaN(n1)) { 
+                document.getElementById("error").innerHTML += number1 + "<br>Not A valid Number"; 
+            }
+            if (n1 < 2 || n1 > 10) { 
+                document.getElementById("error").innerHTML += "<br>Size of the square should be between 2 and 10";
+            
+            }
+        } 
+        else {
+            document.getElementById("error").innerHTML = "";
+            textStr = "<pre>";
+            //    document.write("<p><pre>");
+                for (row=1; row<=n1; row++) {
+                    if (row === 1 || row === n1) {
+                        for (var i=1; i<=n1; i++) {
+                            textStr += "* ";
+            //                document.write("* ");
+                        }
+                    } else {
+                        for (var i = 1; i <=n1; i++) {
+                            if (i==1 || i== n1) { 
+                                textStr += "* ";
+             //                   document.write("* ");
+                            }
+                            else {
+                                textStr += "  ";
+             //                   document.write("  ");
+                            }
+
+                        }
+                    }
+                    textStr += "<br>";
+            //        document.write("<br>");
+                }
+            textStr += "</pre>";
+          //  document.write("</pre></p>");
+            document.getElementById("result").innerHTML = textStr;
+        
+        }
+    }
+    
+    
+
+</script>
+</head>
+<body>
+    <header><h1>Homework 4 - Extra Credit</h1></header>
+    <p>
+    <a href="hw4.html">Back to Homework 4 main page</a>
+    <br><br>
+    </p>
+
+    <form name="hw4form">
+        <div>
+        <h3>A Hollow Square Asterisk</h3>
+        <label for="num1">Size of the square (2-10):  </label>
+            <input type="number" id="num1" min="2" max="10" autofocus ><br><br>
+        
+        <input type="button" onclick="process()" id="submit" value="SUBMIT" name="submit">
+        &nbsp; &nbsp; &nbsp;
+        <input type="reset"  onclick="res()" id="reset" value="RESET" name="reset"><br><br>
+        </div>
+        <div id="result"></div>
+        <div id="error"></div>
+        
+    </form> 
+
+
+ </body>
+ </html>
