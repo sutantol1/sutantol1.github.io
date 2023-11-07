@@ -16,15 +16,16 @@ main {
    margin: 0;
    padding: 5px 14px;
 }
+/*
 div {
    border: solid 2px blue;
-   position: relative;
+ /*  position: relative; 
    width: 600px;
    padding: 5px;
    background-color: #c7c7f0;
    margin: 50px;
    
-}
+}*/
 
 #project {
    border-radius: 10px;

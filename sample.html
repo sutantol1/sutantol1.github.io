@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="using loop to calculate gross salary">
+<title>Sample using Looping</title>
+<style>
+body {
+	margin:50px 0px; padding:0px;
+	text-align:center;
+        background-color:#f5f5dc;
+	}
+	
+.body {
+	width:800px;
+	margin: 0px auto;
+	text-align:left;
+	padding:10px;
+	background-color: #dcd7d0;
+	}
+
+input {text-align: right;}
+
+th {text-align: center;}
+
+.error{
+	color: red;
+	margin-left: 10px;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+<script>
+/* validates input fields individually */
+$(document).ready(function(){
+  $("#myForm").validate({
+  // Rules for each input item
+  rules: 
+   {
+    inGross1: { required: true, number: true },
+    inGross2: { required: true, number: true },
+    inGross3: { required: true, number: true },
+    inGross4: { required: true, number: true },
+    inBonus1: { required: true, number: true },
+    inBonus2: { required: true, number: true },
+    inBonus3: { required: true, number: true },
+    inBonus4: { required: true, number: true },
+   }
+  }); 
+});
+
+function process() {
+  if ($("#myForm").valid()) {
+
+    //declare and define variables
+    var gross, bonus, TotalGross;
+
+    for (var i = 1; i <=4; i++) {
+
+     gross = parseFloat(document.getElementById("inGross" + i).value); // User input gross
+     bonus = parseFloat(document.getElementById("inBonus" + i).value); // User input bonus
+
+     //calculate total without overtime
+
+     TotalGross = gross + bonus;
+
+     //output fields
+
+     document.getElementById("outGross" + i).value = gross.toFixed(2);     // output gross
+     document.getElementById("outBonus" + i).value = bonus.toFixed(2);     // output bonus
+     document.getElementById("outPay" + i).value = TotalGross.toFixed(2);  // output pay
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+
+<section class="body">
+
+<h3>Looping Sample 1</h3>
+
+<p><span style="background-color: yellow;">validates input fields individually</span><br><br>
+Input the monthly gross and the bonus for each employee:</p>
+
+<form id="myForm" name="myForm">
+<table>
+<tr><th>Employee</th><th>Monthly Gross</th><th>Bonus</th></tr>
+<tr><td><label for="inGross1">Employee 1</label></td><td><input type="text" name="inGross1" id="inGross1"></td>
+<td><label for="inBonus1"></label><input type="text" id="inBonus1" name="inBonus1"></td></tr>
+<tr><td><label for="inGross2">Employee 2</label></td><td><input type="text" name="inGross2" id="inGross2"></td>
+<td><label for="inBonus2"></label><input type="text" id="inBonus2" name="inBonus2"></td></tr>
+<tr><td><label for="inGross3">Employee 3</label></td><td><input type="text" name="inGross3" id="inGross3"></td>
+<td><label for="inBonus3"></label><input type="text" id="inBonus3" name="inBonus3"></td></tr>
+<tr><td><label for="inGross4">Employee 4</label></td><td><input type="text" name="inGross4" id="inGross4"></td>
+<td><label for="inBonus4"></label><input type="text" id="inBonus4" name="inBonus4"></td></tr>
+</table>
+
+<input type="button"  value="Submit" onclick="process();">
+<input type="reset" value="Reset" onclick="window.location.reload();">
+<br><br>
+
+<table>
+<tr><th>Employee</th><th>Monthly Gross</th><th>Bonus</th><th>Total Pay</th></tr>
+<tr><td>1</td><td><input type="text" id="outGross1" disabled></td>
+<td><input type="text" id="outBonus1" disabled></td><td><input type="text" id="outPay1" disabled></td></tr>
+<tr><td>2</td><td><input type="text" id="outGross2" disabled></td><td><input type="text" id="outBonus2" disabled>
+</td><td><input type="text" id="outPay2" disabled></td></tr>
+<tr><td>3</td><td><input type="text" id="outGross3" disabled></td><td><input type="text" id="outBonus3" disabled>
+</td><td><input type="text" id="outPay3" disabled></td></tr>
+<tr><td>4</td><td><input type="text" id="outGross4" disabled></td><td><input type="text" id="outBonus4" disabled>
+</td><td><input type="text" id="outPay4" disabled></td></tr>
+</table>
+</form>
+
+</section>
+<p>
+  Sample other function code<br>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/function8a.html">Dynamic Form</a><br>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/function7a.html">Guess a number</a><br>
+  <a href="/practiceFormExercise.html">Practice form exercise</a><br>
+  <a href="/promptExercise.html">Prompt exercise</a><br>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/arrayex1.html">Simple array example</a><br>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/arrayex3.html">Validate radio button</a><br>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/arrayex7.html">One D array </a><br>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/arrayex6OnlyJS.html">2D array</a>
+  <a href="https://hills.ccsf.edu/~cdasilva/cnit133/arrayex8b.html"> -Array-  Duplicate ignored --</a>
+
+  <br><br>
+  Other Students portfolio<br>
+  <a href="https://sivo91.github.io/AJAX-Programming/js/hw5.html">Peter Sivak</a>
+  <a href="https://tasandra.github.io/CIS-114-JavaScript/index.html">Alexandra Tarasova</a><br>
+  <a href="https://scholarbunnie.github.io/index.html">Tiffany Chung</a><br>
+  <a href="https://kmakmichael.github.io/hw4.html">Michael Kwak</a>
+  <a href="https://samunderwood1231.github.io/hw3_EC.html">Sam Underwood</a><br>
+  <a href="https://lindasutanto.netlify.app/">Linda S - summer 2023</a><br>
+  <a href="https://treasure-game.peter119.repl.co/">Peter's treasure game</a>
+  <br><br>
+  <a href="https://cs50.harvard.edu/web/2020/">CS50’s Web Programming with Python and JavaScript</a>
+</p>
+</body>
+</html>

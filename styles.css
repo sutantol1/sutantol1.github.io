@@ -11,7 +11,7 @@ body {
    font-family: Helvetica, sans-serif;
    color: var(--font-color);
    width: 80%;
-   margin: 0px auto;
+ /*  margin: 0px auto; */
 }
 
 main {
@@ -93,8 +93,7 @@ header h1 {
 }
 p { margin-left: 30px;}
 
-div {
-  /* width: 315px; */
+ div {
    margin: 0 auto; 
    text-align:center;
 } 
@@ -106,7 +105,7 @@ form {
    background-color:  lavender;
    width: 400px; 
    margin-left: 30px;
-   /* margin: 0px auto; */
+    margin: 0px auto; 
    padding: 20px;
 }
 
@@ -114,7 +113,9 @@ input:focus {
    background-color: lightblue;
 }
 
-label {float: left;}
+div fieldset {
+   text-align: left;
+}
 
 #submit, #reset {
     float:none;
