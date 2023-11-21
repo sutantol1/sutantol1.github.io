@@ -5,7 +5,18 @@
 <meta name="description" content="HW6 - Part 3">
 <title>HW6 Part 3</title>
 <link rel="stylesheet" href="styles.css">
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+<!-- Required for using jQuery input mask plugin -->
+<script src=
+   "https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js">
+</script>
 <script>
+    // jQuery input mask on telephone format
+    $(document).ready(function () {
+        $("#phoneInput").inputmask("(999)999-9999");
+    });
 
     function pass() {
 
@@ -31,8 +42,10 @@
             document.getElementById("lastFour").value = parts[3];
         } else {
             errorTxt = "Invalid entry <br>Please enter number in this format (999)999-9999";
+            document.getElementById("error").innerHTML = errorTxt;
+            document.getElementById("phoneInput").focus();
         }
-        document.getElementById("error").innerHTML = errorTxt;
+        
     }
 </script>
 </head>
