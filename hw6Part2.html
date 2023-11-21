@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="HW6 Part 2 - Searching for character ">
+  <title>HW6 Part 2 - Searching for character</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- 
+    The user will type whatever content he/she wants in the textarea for the long content, 
+    and the user will also type a single character in the input box you provided. 
+    When the user clicks the submit button, you will:
+Search for the character the user typed inside the content in the textarea and 
+you will count how many times this character is shown in the big content
+If the character is found, you will present a message in the output/result area 
+that says how many times the character X shows up in the content where X is the 
+single character typed by the user
+If the character is not found, you will present a new window (using the window.open() method you learned), the message: "Search character X not found in the content you typed", where X is the single character typed by the user. You should also make sure that, in this case, you will clear the input box or textarea that would be presenting the result of a positive search
+NOTE: The new window should be 300 pixels by 100 pixels (width by height) and 
+should be presented on a place that do not obscure any of the main content on the page the user is working with - you will choose the best place depending on your layout
+TIP: when presenting the new window, it will be GREAT, if you present a button 
+that the user can click to CLOSE that new window
+  -->
+  <script type="text/javascript"></script>
+<script>
+    function passData()  {
+    var name = document.getElementById("name1").value.toLowerCase();
+    var char = document.myForm.searchCharacter.value.toLowerCase();
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("error").innerHTML = "";
+
+    //console.log(char);
+    var myText = "";
+    var charOK = name.indexOf(char);
+
+    // Check if char is not found
+    if (charOK == -1) {
+        //clear the textarea and searchChar
+        document.getElementById("name1").value = "";
+        document.getElementById("searchChar").value = "";
+        document.getElementById("name1").focus();
+
+        // assemble HTML to pump into new window:
+        myText += '<html>';
+        myText += '<body>';
+        myText += "<div style='margin:0 auto;'>\n";
+        myText += "<p><strong>Letter " + char + " is not found</strong>\n";
+        myText += "<strong>in " + name + "</strong></p>";
+        myText += "<input type='button' value='Close Window' onclick='window.close()'>\n";
+        myText += '</div>';
+        myText += '</body>';
+        myText += '</html>';
+
+        // open window on the upperleft of the screen
+        var newWindow = window.open("", "new_window",
+        "top=30,left=350,width=300,height=100");
+
+        newWindow.opener = null;   // this is for security!!!
+
+        // have browser focus on window
+        newWindow.focus();
+
+        // pump html into to this new opened window
+        newWindow.document.write(myText);
+
+        // tell browser that newWindow document is finished loading
+        newWindow.document.close();
+
+    }
+    else {
+
+        var re = new RegExp(char, 'gi');
+        var charFound  = name.match(re);
+
+        document.getElementById("result").innerHTML = "Found the letter \"" + char + 
+        "\" " + charFound.length + " time(s) in the content";
+    }
+    }
+</script>
+</head>
+<body>
+    <header><h1>Homework 6 - Part 2</h1></header>
+    <p>
+    <a href="hw6.html">Back to Homework 6 main page</a>
+    <br><br>
+    </p>
+<section class="body">
+
+<form name = "myForm">
+<p><strong>Search letter in the content</strong></p>
+<p><label for="name1">Enter the content:</label>
+<textarea rows="2" cols="20" name="name1" id="name1" autofocus></textarea></p>
+<p>
+<label for="searchCharacter">Letter to search: </label>
+<input type="text" maxlength="1" style="width:1em" name="searchCharacter" id="searchChar"></p>
+<p>
+<input type = "button" value = "Search"
+onclick = "passData()"></p>
+<p id="result"></p>
+<p id="error"></p>
+</form>
+</section>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://hills.ccsf.edu/~cdasilva/cnit133/object4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+
+<meta name="description" content="Passing html and css to pop up window">
+<title>Opening a New Window</title>
+
+<script>
+
+function passData()
+{
+var name = document.getElementById("name1").value;
+
+// assemble HTML to pump into new window:
+
+var myText = "<!DOCTYPE html><html lang='en'><head><title>Popup Window</title>\n";
+myText += "</head><body><div style='margin:0 auto;'><p><strong>Your name is " + name + " !</strong></p>\n";
+myText += "<input type='button' value='Close Window' onclick='window.close()'></div></html>";
+
+
+
+// open window on the upperleft of the screen
+
+var newWindow = window.open("", "new_window",
+"top=1,left=1,width=200,height=120");
+
+newWindow.opener = null;   // this is for security!!!
+
+// have browser focus on window
+
+newWindow.focus();
+
+// pump html into to this new opened window
+
+newWindow.document.write(myText);
+
+// tell browser that newWindow document is finished loading
+
+newWindow.document.close();
+}
+</script>
+
+<style>
+body {background-color: #f5f5dc;}
+</style>
+
+</head>
+
+<body>
+<section class="body">
+<h3>Pass data to popup window</h3>
+<form name="myForm">
+<p><strong>Enter your name: </strong>
+<input type="text" size="20" name="name1" id="name1"><br><br>
+<input type="button" value="Pass data to popup window" onclick="passData()"></p>
+</form>
+</section>
+
+</body></html>

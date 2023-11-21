@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW6 - Part 1">
+<title>HW6 Part 1</title>
+<link rel="stylesheet" href="styles.css">
+
+<!-- 
+    HW6 Part 1:
+Create a webpage with:
+You will create a web page with
+a heading that you can choose
+a form that will have:
+an input box for the user to enter a number with 4 decimals
+a button to submit the data
+a button to clear the form
+a textarea (or another element outside the form - div or paragraph) where 
+you will write the output/result
+a hyperlink to go back to the main page of Homework 6
+If the user types a valid number (with 4 decimals and it is a number), 
+you will use Math.round, Math.sqrt, Math.floor, toFixed() etc. to obtain the following:
+TIPS:
+when reading the input, make sure you will be using parseFloat() to not lose 
+the decimal numbers before doing the calculations requested
+remember to use the toFixed() only at the time you will present the final result
+round the floating-point number to the nearest integer
+calculate the square root of the floating-point number and round it to an integer
+round the floating-point number to the nearest tenths position
+round the floating-point number to the nearest hundredths position
+round the floating-point number to the nearest thousandths position
+
+-->
+<script>
+    function res() {
+        // reset all the forms and result
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("num1").focus();
+    }
+    function process() {
+        var number1, n1, row, errorTxt, textStr;
+        //    n1= parseInt(document.forms["hw2pt2form"].elements["num1"].value);
+        errorTxt = "";
+        textStr = "";
+        number1 = document.getElementById("number").value;
+        n1 = parseFloat(number1);
+        // regular expression for testing 4 decimal
+        var regexp = /^\d+\.(\d{4,})?$/ 
+        numTest = regexp.test(n1);
+        //console.log("process: " +numTest );
+
+        //check for input type, display error message for non number in the input boxes
+        if (isNaN(n1) || n1 < 1 || !numTest) {    
+            document.getElementById("error").innerHTML = "";
+            document.getElementById("result").innerHTML = "";     
+            document.getElementById("number").focus(); 
+            //display error message in the error paragraph area
+            if (isNaN(n1)) { 
+                document.getElementById("error").innerHTML += number1 + "<br>Not A valid Number"; 
+            }
+            if (n1 < 1) { 
+                document.getElementById("error").innerHTML += "<br>Number has to be positive";
+            }
+            if (!numTest) {
+                document.getElementById("error").innerHTML += "<br>Number has to be at least 4 digit";
+            }
+        } 
+        else {
+            textStr += "<br>You typed: " + n1;
+            textStr += "<br>Rounded to the nearest integer: " + Math.round(n1);
+            textStr += "<br>SquareRoot (rounded to nearest integer): " + Math.round(Math.sqrt(n1));
+            textStr += "<br>Nearest tenths position: " + n1.toFixed(1);
+            textStr += "<br>Nearest hundreths position: " + n1.toFixed(2);
+            textStr += "<br>Nearest thousandths position: " + n1.toFixed(3);
+            document.getElementById("error").innerHTML = errorTxt;
+            document.getElementById("result").innerHTML = textStr;   
+        }
+    }
+</script>
+</head>
+<body>
+    <header><h1>Homework 6 - Part 1</h1></header>
+    <p>
+    <a href="hw6.html">Back to Homework 6 main page</a>
+    <br><br>
+    </p>
+
+    <form name="hw6Pt1form">
+        <div>
+        <h3></h3>
+        <label for="num1">Enter the 4 digit number:  </label>
+            <input type="number" id="number" autofocus title="Minimum 4 digit, for example: 99.9999"><br><br>
+        
+        <input type="button" onclick="process()" id="submit" value="SUBMIT" name="submit">
+        &nbsp; &nbsp; &nbsp;
+        <input type="reset"  onClick="window.location.reload()" id="reset" value="RESET" name="reset">
+        </div>
+        <p id="result"></p>
+        <p id="error"></p>
+        
+    </form> 
+
+
+ </body>
+ </html>

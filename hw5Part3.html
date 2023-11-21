@@ -31,7 +31,7 @@
 
     function displayError() {
         let errorTxt = "Sorry, we do not have information about this state<br>";
-        errorTxt += "We only have information about<br>";
+        errorTxt += "We only have information for<br>";
         for (var state of stateData) {
             errorTxt += state[0] + ":  " + state[1] + "<br>";
         }
@@ -59,10 +59,10 @@
         }
 
         if (checkValue === 1) {
-            console.log("resultTxt");
+          //  console.log("resultTxt");
             document.getElementById("result").innerHTML = displayResult(resultTxt);
         } else {
-            console.log("not found");
+         //   console.log("not found");
             document.getElementById("error").innerHTML = displayError();
         }
     }

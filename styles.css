@@ -1,4 +1,4 @@
-/* updated 9/24/23 */
+/* updated 11/15/23 */
 :root {
    --accent-color: rgba(128, 56, 176, 0.76);
    --accent-dark-color: #cadcf5;
@@ -82,13 +82,13 @@ header {
    border-radius: 10px;
    background-color: white;
    padding-left: 20px;
-   margin: 10;
+   margin: 10px;
 }
 
-header h1 {
+h1 {
    color: var(--accent-color);
    font-size: 1 rem;
-   margin: 10px 10px;
+  /* margin: 10px 10px; */
    text-shadow: 2px 2px 3px gray; 
 }
 p { margin-left: 30px;}
@@ -117,7 +117,7 @@ div fieldset {
    text-align: left;
 }
 
-#submit, #reset {
+input[type=button], input[type=reset] {
     float:none;
     border-radius: 10px;
     font-weight: bold;
