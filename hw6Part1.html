@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="HW6 - Part 1">
+<meta name="description" content="HW6 - Part 1 Regular Expression & Math object">
 <title>HW6 Part 1</title>
 <link rel="stylesheet" href="styles.css">
 
@@ -36,7 +36,7 @@ round the floating-point number to the nearest thousandths position
         // reset all the forms and result
         document.getElementById("result").innerHTML = "";
         document.getElementById("error").innerHTML = "";
-        document.getElementById("num1").focus();
+        document.getElementById("number").focus();
     }
     function process() {
         var number1, n1, row, errorTxt, textStr;
@@ -88,9 +88,8 @@ round the floating-point number to the nearest thousandths position
 
     <form name="hw6Pt1form">
         <div>
-        <h3></h3>
         <label for="num1">Enter the 4 digit number:  </label>
-            <input type="number" id="number" autofocus title="Minimum 4 digit, for example: 99.9999"><br><br>
+        <input type="number" id="number" autofocus title="Minimum 4 digit, for example: 99.9999"><br><br>
         
         <input type="button" onclick="process()" id="submit" value="SUBMIT" name="submit">
         &nbsp; &nbsp; &nbsp;

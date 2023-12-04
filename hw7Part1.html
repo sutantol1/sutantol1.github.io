@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="HW7 Part 1 - Customizing Font & Background ">
+  <title>HW7 Part 1 - Customizing Font & Background</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- 
+    a form with:
+radio buttons for the user to select the color of the background to be applied 
+(you should have at least 2 different colors for the user to choose from)
+checkboxes that will allow the user to choose "underline", and/or "bold", 
+and/or "italic" - remember that HTML checkboxes allow the user to choose one 
+or more options
+a select element to create a drop-down list where you will allow the user 
+to select the font-size to be applied (at least 3 different font-size should 
+be listed and preferably in em, or rem, or % units)
+there should be no button to clear the choices, neither a button to submit 
+the information - when the user selects a style, that style will be applied 
+right away
+  -->
+  <script type="text/javascript">
+
+    function switchBackground(inputBackground) {
+        const body = document.getElementById("styleArea");
+        body.style.backgroundColor = inputBackground;
+
+       // body.className = inputBackground; -- need to create class in css
+       // document.body.style.backgroundColor = inputBackground;  -- change the whole page
+
+    }
+
+    function checkFunction(){
+        const body = document.getElementById("styleArea");
+        var checkBold = document.getElementById("bold");
+        var checkUnderline = document.getElementById("underline");
+        var checkItalic = document.getElementById("italic");
+
+        // If the checkbox is checked, display the output text
+        if (checkBold.checked == true){
+            body.classList.add("bold");
+            body.classList.remove("normal");
+        } else {
+            body.classList.remove("bold");
+            body.classList.add("normal");
+        }
+
+        if (checkUnderline.checked == true) {
+            body.classList.add("underLine");
+            body.classList.remove("noLine");
+        } else {
+            body.classList.add("noLine");
+            body.classList.remove("underLine");
+        }
+
+        if (checkItalic.checked == true) {
+            body.classList.add("italic");
+            body.classList.remove("normal");
+        } else {
+            body.classList.add("normal");
+            body.classList.remove("italic");
+        }
+    }
+
+    function selectFontSize() {
+        const body = document.getElementById("styleArea");
+        let fontSize = document.getElementById("fontSize").value;
+        body.style.fontSize = fontSize;
+    }
+  </script>
+
+<style>
+    form {
+   font-size: 100%;
+   border: none;
+   border-radius: 10px;
+   background-color: lavender;
+   width: 800px; 
+   margin-left: 5px;
+    margin: 0px auto; 
+   padding: 20px;
+}
+table {
+   margin-left: 3px;
+}
+    td {padding: 30px;}
+    tr { background: rgb(193, 218, 218); } 
+
+
+    /* No longer used.. 
+    .red {background-color: red;}
+    .blue {background-color: blue;}
+    .yellow {background-color: yellow;}
+    */
+
+    .italic {font-style: italic;}
+    .normal {font-style: normal;}
+    .bold {font-weight: bold;}
+    .underLine {text-decoration: underline;}
+    .noLine {text-decoration: none;}
+
+</style>
+</head>
+<body id="body" >
+    <header><h1>Homework 7 - Part 1 </h1>
+    </header>
+    <p>
+    <a href="hw7.html">Back to Homework 7 Main Page</a>
+    <br><br>
+    </p>
+
+    <form id="hw7form">
+        <fieldset>Style the content below: (excerpt from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Mozzila</a>)</fieldset>
+        <table >
+        <tr>
+            <td>
+                Background color:<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('salmon')">Salmon <br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('chocolate')">Chocolate<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('silver')">Silver<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('seagreen')">Sea Green<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('green')">Green<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('lime')">Lime<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('limegreen')">Lime Green<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('teal')">Teal<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('aquamarine')">Aqua Marine<br>
+
+            </td>
+            <td rowspan="3" id="styleArea" bgcolor="white">
+                <p>
+                    The Document Object Model (DOM) connects web pages to scripts or programming
+                     languages by representing the structure of a document—such as the HTML 
+                     representing a web page—in memory. Usually it refers to JavaScript, 
+                     even though modeling HTML, SVG, or XML documents as objects are not part of 
+                     the core JavaScript language.
+                    </p>
+                    <p>
+                    The DOM represents a document with a logical tree. Each branch of the tree ends 
+                    in a node, and each node contains objects. DOM methods allow programmatic access to 
+                    the tree. With them, you can change the document's structure, style, or content.
+                    </p>
+                    <p>
+                    Nodes can also have event handlers attached to them. Once an event is 
+                    triggered, the event handlers get executed.
+                    </p>
+            </td>
+            </tr>
+            <tr>
+            <td>
+                <input type="checkbox" name="fontStyle" value="bold" id="bold" onClick="checkFunction()">
+                <label for="bold">Bold</label> <br>
+                <input type="checkbox" name="fontStyle" value="underline" id="underline" onClick="checkFunction()">
+                <label for="underline">Underline</label><br>
+                <input type="checkbox" name="fontStyle" value="italic" id="italic" onClick="checkFunction()">
+                <label for="italic">Italic</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Font size:<br>
+                <select name="fontSize" id="fontSize" onChange="selectFontSize()">
+                    <option value="#">Select font size</option>
+                    <option value="8px">8px</option>
+                    <option value="12px">12px</option>
+                    <option value="16px">16px</option>
+                    <option value="80%">80%</option>
+                    <option value="100%">100%</option>
+                    <option value="120%">120%</option>
+                    <option value="1rem">1rem</option>
+                    <option value="1.5rem">1.5rem</option>
+                    <option value="2rem">2rem</option>
+                    <option value="1em">1em</option>
+                    <option value="1.5em">1.5em</option>
+                    <option value="2em">2em</option>
+                    <option value="small">small</option>
+                    <option value="medium">medium</option>
+                    <option value="large">large</option>
+                    <option value="x-large">x-large</option>
+
+                </select>
+            </td>
+        </tr>
+        </table>  
+    </form>
+</body>
+</html>

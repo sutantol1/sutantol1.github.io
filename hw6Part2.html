@@ -21,8 +21,8 @@ should be presented on a place that do not obscure any of the main content on th
 TIP: when presenting the new window, it will be GREAT, if you present a button 
 that the user can click to CLOSE that new window
   -->
-  <script type="text/javascript"></script>
-<script>
+<script type="text/javascript">
+
     function passData()  {
     var name = document.getElementById("name1").value.toLowerCase();
     var char = document.myForm.searchCharacter.value.toLowerCase();
@@ -35,9 +35,6 @@ that the user can click to CLOSE that new window
 
     // Check if char is not found
     if (charOK == -1) {
-        //clear the textarea and searchChar
-        document.getElementById("name1").value = "";
-        document.getElementById("searchChar").value = "";
         document.getElementById("name1").focus();
 
         // assemble HTML to pump into new window:
@@ -53,7 +50,7 @@ that the user can click to CLOSE that new window
 
         // open window on the upperleft of the screen
         var newWindow = window.open("", "new_window",
-        "top=30,left=350,width=300,height=100");
+        "top=150,left=350,width=300,height=100");
 
         newWindow.opener = null;   // this is for security!!!
 
