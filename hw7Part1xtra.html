@@ -71,7 +71,22 @@ right away
   </script>
 
 <style>
+    form {
+   font-size: 100%;
+   border: none;
+   border-radius: 10px;
+   background-color: lavender;
+   width: 800px; 
+   margin-left: 5px;
+    margin: 0px auto; 
+   padding: 20px;
+}
+table {
+   margin-left: 3px;
+}
+    td {padding: 30px;}
     tr { background: rgb(193, 218, 218); } 
+
 
     /* No longer used.. 
     .red {background-color: red;}
@@ -97,10 +112,10 @@ right away
     </p>
 
     <form id="hw7form">
-        Style the content below: (excerpt from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Mozzila</a>)
+        <fieldset>Style the content below: (excerpt from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Mozzila</a>)</fieldset>
         <table >
         <tr>
-            <td rowspan="2">
+            <td>
                 Background color:<br>
                 <input type="radio" name="bgcolor" onClick="switchBackground('salmon')">Salmon <br>
                 <input type="radio" name="bgcolor" onClick="switchBackground('chocolate')">Chocolate<br>
@@ -113,6 +128,26 @@ right away
                 <input type="radio" name="bgcolor" onClick="switchBackground('aquamarine')">Aqua Marine<br>
 
             </td>
+            <td rowspan="3" id="styleArea" >
+                <p>
+                    The Document Object Model (DOM) connects web pages to scripts or programming
+                     languages by representing the structure of a document—such as the HTML 
+                     representing a web page—in memory. Usually it refers to JavaScript, 
+                     even though modeling HTML, SVG, or XML documents as objects are not part of 
+                     the core JavaScript language.
+                    </p>
+                    <p>
+                    The DOM represents a document with a logical tree. Each branch of the tree ends 
+                    in a node, and each node contains objects. DOM methods allow programmatic access to 
+                    the tree. With them, you can change the document's structure, style, or content.
+                    </p>
+                    <p>
+                    Nodes can also have event handlers attached to them. Once an event is 
+                    triggered, the event handlers get executed.
+                    </p>
+            </td>
+            </tr>
+            <tr>
             <td>
                 <input type="checkbox" name="fontStyle" value="bold" id="bold" onClick="checkFunction()">
                 <label for="bold">Bold</label> <br>
@@ -148,24 +183,6 @@ right away
             </td>
         </tr>
         </table>  
-        <div id="styleArea" >
-            <p>
-                The Document Object Model (DOM) connects web pages to scripts or programming
-                 languages by representing the structure of a document—such as the HTML 
-                 representing a web page—in memory. Usually it refers to JavaScript, 
-                 even though modeling HTML, SVG, or XML documents as objects are not part of 
-                 the core JavaScript language.
-                </p>
-                <p>
-                The DOM represents a document with a logical tree. Each branch of the tree ends 
-                in a node, and each node contains objects. DOM methods allow programmatic access to 
-                the tree. With them, you can change the document's structure, style, or content.
-                </p>
-                <p>
-                Nodes can also have event handlers attached to them. Once an event is 
-                triggered, the event handlers get executed.
-                </p>
-        </div>
     </form>
 </body>
 </html>

@@ -32,6 +32,24 @@ ANOTHER TAB/WINDOW
     var mydest = myForm.selectList.options[myForm.selectList.selectedIndex].value;
     window.open(mydest);
     }
+    function selectFontSize()
+{      
+    var origTableObject = document.getElementById("origTable");    
+    var selectedFontSize = document.getElementById('fontSize').value;
+            
+    if (selectedFontSize == "small")
+    {
+        origTableObject.className = "small basicTable";
+    }
+    else if (selectedFontSize == "medium")
+    {
+        origTableObject.className = "medium basicTable";
+    }
+    else if (selectedFontSize == "large")
+    {
+        origTableObject.className = "large basicTable";
+    }           
+}
 
 </script>
 </head>

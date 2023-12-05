@@ -9,9 +9,11 @@
 
       <script>
 function createCookie() {
-  var cName = "username";
+
   var cValue = document.getElementById("user").value;
-  document.cookie = cName + "=" + cValue + ";";
+  var cNameValue = document.getElementById("name").value;
+  document.cookie = "name=" + cNameValue + ";";
+  document.cookie = "username=" + cValue + ";";
 }
 
 function getCookie(cName) {
@@ -19,6 +21,7 @@ function getCookie(cName) {
   var ca = document.cookie.split(';');
   for(var i = 0; i < ca.length; i++) {
     var c = ca[i];
+    console.log("ca " [i] + ": "+ca[i]);
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }
@@ -31,11 +34,13 @@ function getCookie(cName) {
 
 function checkCookie() {
   var user = getCookie("username");
+  var name = getCookie("name");
   if (user != "") {
     console.log(user);
     document.getElementById("result").innerHTML = "Welcome back " + user;
     document.getElementById("myform").style.display = "none";
   } else {
+    console.log("nothing found");
     document.getElementById("myform").style.display = "block";
     }
   }
@@ -51,6 +56,8 @@ function checkCookie() {
 <p id="result"></p>
 <div id="myform">
 <form>
+<label for="name">Type your name: </label> <input type="text" name="name" id="name">
+<br>
 <label for="user">Type your username: </label> <input type="text" name="user" id="user">
 <br><br>
 <input type="button" value="Create Cookie" onclick="createCookie();"><br>
