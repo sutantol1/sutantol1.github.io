@@ -99,6 +99,9 @@ div {
    text-align:center;
 } 
 
+section {
+   margin: 30px;
+}
 form {
    font-size: 110%;
    border: 3px double;
@@ -118,7 +121,7 @@ div fieldset {
    text-align: left;
 }
 
-input[type=button], input[type=reset] {
+input[type=button], input[type=reset], button {
     float:none;
     border-radius: 10px;
     font-weight: bold;

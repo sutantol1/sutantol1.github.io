@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Ajax exercise using directory of zip codes">
+<title>Using Ajax to get the city and state from a zip code</title>
+
+<style>
+body {background-color: #f5f5dc;}
+.body { width: 600px; margin: 0 auto;}
+</style>
+
+<script>
+/* function getPlace
+     parameter: zip code
+     action: create the XMLHttpRequest object, register the handler for onreadystate,
+             prepare to send the request (with open), and send the request, along
+             with the zip code, to the serve */             
+
+function getPlace(zip)   {
+
+/* create an XMLHttpRequest object based on the type of web browser being used. 
+*/
+
+	var ajaxRequest;  // The variable that makes Ajax possible!
+    // this below is simply to test if XMLHttpRequest() works in your browser - it probably will but...	
+
+    try{
+		// Opera 8.0+, Firefox, Safari
+		ajaxRequest = new XMLHttpRequest();
+	} catch (e){
+		// Internet Explorer Browsers
+		try{
+			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try{
+				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e){
+				// Something went wrong
+				alert("Your browser broke!");
+				return false;
+			}
+		}
+	}
+
+/* Register the embedded receiver function as the handler */
+  
+    ajaxRequest.onreadystatechange = function() {
+
+/* 4 means that the response has been completed and 200 means the request was successfully
+    copleted */   
+
+    if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
+
+/* The receiver gets the response text, uses the split method to spearate it into
+   city and state, and sets the text boxes for city and state to the values received
+   
+   The assignments to the city and state text boxes are placed in selection
+   constructs to preven the overwriting of user-input city and state names
+   for the cases  where the zip code was NOT found on the server or the data
+   from the server was incorrect
+*/
+
+        var result = ajaxRequest.responseText;
+        var place = result.split(', ');
+
+     if (document.getElementById("city").value == "")
+             document.getElementById("city").value = place[0];
+
+     if (document.getElementById("state").value == "")
+             document.getElementById("state").value = place[1];
+	}
+     }
+
+/* Specify the URL of server-side script that will be used in our Ajax application.
+   Use the send method to send our request to the server. The city and state text 
+   boxes pull values from the server from "getCityState.php"
+   without having to reload the entire page! */
+
+   /* if the zip code is not in this php program below, then you will not get the city, neither state */
+    ajaxRequest.open("GET", "getCityState.php?zip=" + zip);
+    ajaxRequest.send(null); 
+}
+
+function Validate()
+{
+
+// create messages
+
+	var msg = "zip code error";
+        var msg1 = "name or address cannot be blank";
+        var name1 = document.forms["myForm"].elements["name"].value;
+        var addr1 = document.forms["myForm"].elements["street"].value;
+	var zip1 = document.forms["myForm"].elements["city"].value;
+	
+  if (zip1 == "zip code error")
+  	{          	
+            alert (msg);
+            document.forms["myForm"].elements["city"].value = "";
+            document.forms["myForm"].elements["state"].value = "";
+            document.forms["myForm"].elements["zip"].value = "";
+            document.forms["myForm"].elements["zip"].focus();
+  	    return false;
+        }          
+
+   if (name1 == "" || addr1 == "")
+       {
+        alert (msg1);
+        return false;
+       }
+}
+</script>
+
+</head>
+
+<body>
+
+<section class="body">
+
+<h2>Welcome to the Booster Club Hemp Sales</h2>
+
+<form id="myForm" name="myForm" action="mailto:cdasilva@ccsf.edu" method="post" enctype="text/plain">
+
+<table>
+
+<tr>
+<td>Zip Code:</td>
+<td><input type="text" onblur="getPlace(this.value)" name="zip" size="10" autofocus></td>
+<td rowspan="6"><img src="hemp.jpg" alt="picture of hemp"></td>
+</tr>
+
+<tr>
+<td>City:</td>
+<td><input type="text" name="city" id="city"  size="30" readonly="readonly"></td>
+</tr>
+
+<tr>
+<td>State:</td>
+<td><input type="text" name="state" id="state"  size="30" readonly="readonly"></td>
+</tr>
+
+<tr>
+<td>Buyer's Name:</td>
+<td><input type="text" name="name" size="30"></td>
+</tr>
+
+<tr>
+<td>Street Address:</td>
+<td><input type="text" name="street" size="30"></td>
+</tr>
+
+</table>
+
+<p>
+<input type="submit" value="Submit order" onclick="return Validate(this.form)">
+<input type="reset" value="Clear order form" onClick="window.location.reload();">
+</p>
+
+</form>
+</section>
+</body>
+</html>

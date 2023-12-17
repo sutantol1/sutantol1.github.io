@@ -1,0 +1,77 @@
+
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" >
+        // bart station info example
+$(document).ready(function() {
+  $(document).on('keypress', '#station', function(event) {
+    if (event.which === 13) { // checking if the ENTER key was pressed
+      var input = $(this);
+      var station = input.val();
+
+      console.log('station was: ' + station);
+	  getStationInfo(station);
+    }
+  });
+});
+
+function getStationInfo(station) {
+  var url = 'https://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=' + station + '&key=MW9S-E7SL-26DU-VV8V&json=y';
+//  var url = 'https://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=' + station + '&json=y';
+
+  var xmlhttp = new XMLHttpRequest();
+  // the false below is to run the request synchronously otherwise you would write true to run it asynchronously - the last method is better in terms of performance
+  xmlhttp.open('GET', url, false);   // doing a get and the URL will be the URL above + username attached to the end of the URL
+  xmlhttp.send();
+
+  var data = xmlhttp.responseText;   // data will receive the response from the request
+
+  console.log(data);  // the previous line and this line are only to debug the program and make sure that we are receiving data!
+  
+  showStation(xmlhttp);
+  // return xmlhttp; 
+}
+
+function showStation(xmlhttp) {
+  if(xmlhttp.status === 200) {  // testing if the request was successful
+    // show the station information
+	var json = xmlhttp.responseText;   // the responseText is where the data is stored 
+    var station = JSON.parse(json);  // here we are turning the string JSON into a native JavaScript object
+	var stationinfo = station["root"]["stations"]["station"];
+	document.getElementById('station_info').innerHTML = "<h2>" + stationinfo.name + "</h2><p><strong>Information:</strong><br>Address: " + stationinfo.address + "<br>City: " + stationinfo.city + "<br>Zip Code: " + stationinfo.zipcode + "</p>";
+  } else {
+	// show an error  
+    document.getElementById('station_info').innerHTML = "<h2>Error!!!</h2><p>The station requested does not exist or there was an error when getting the data"; 
+  }
+}
+    </script>
+  </head>
+  <body>
+    <header>
+    <h1>Example using a Bart API Request with AJAX call GET</h1>
+    </header>
+    <div id="container">
+	<p style="font-weight:bold; text-align:center; font-size: 1.3em;">Abbreviation of Stations that you can use in this demo:</p>
+	<ul>
+	  <li>PHIL = Pleasant Hill</li>
+	  <li>BALB = Balboa</li>
+	  <li>POWL = Powell</li>
+	  <li>PITT = Pittsburg/Bay Point</li>
+	  <li>WCRK = Walnut Creek</li>
+	  <li>24TH = 24th Street, San Francisco</li>
+	  <li>12TH = 12th Street, Oakland</li>
+	  <li>16TH = 16th Street, San Francisco</li>
+	  </ul>
+      <div class="search">
+        <input id="station" placeholder="name of bart station..." type="text"></input>
+      </div>
+
+      <div id="station_info">
+      </div>
+
+    </div>
+
+  </body>
+</html>

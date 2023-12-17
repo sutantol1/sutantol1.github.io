@@ -19,6 +19,12 @@ be listed and preferably in em, or rem, or % units)
 there should be no button to clear the choices, neither a button to submit 
 the information - when the user selects a style, that style will be applied 
 right away
+NOTE FROM PROFESSOR:  TABLE SHOULD NOT BE USED to layout form
+tables should be used to show tabular data only so you can use the th tags a
+ppropriately as well as other tags that will facilitate accessibility! 
+never use px or pt for font-size as those are not accessible as users can 
+change the settings of font size in their browsers and you do not want to 
+force on them a certain px that is too small for them
   -->
   <script type="text/javascript">
 
@@ -78,7 +84,7 @@ right away
     .blue {background-color: blue;}
     .yellow {background-color: yellow;}
     */
-
+    form {width: 800px;}
     .italic {font-style: italic;}
     .normal {font-style: normal;}
     .bold {font-weight: bold;}
@@ -97,58 +103,7 @@ right away
     </p>
 
     <form id="hw7form">
-        Style the content below: (excerpt from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Mozzila</a>)
-        <table >
-        <tr>
-            <td rowspan="2">
-                Background color:<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('salmon')">Salmon <br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('chocolate')">Chocolate<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('silver')">Silver<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('seagreen')">Sea Green<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('green')">Green<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('lime')">Lime<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('limegreen')">Lime Green<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('teal')">Teal<br>
-                <input type="radio" name="bgcolor" onClick="switchBackground('aquamarine')">Aqua Marine<br>
-
-            </td>
-            <td>
-                <input type="checkbox" name="fontStyle" value="bold" id="bold" onClick="checkFunction()">
-                <label for="bold">Bold</label> <br>
-                <input type="checkbox" name="fontStyle" value="underline" id="underline" onClick="checkFunction()">
-                <label for="underline">Underline</label><br>
-                <input type="checkbox" name="fontStyle" value="italic" id="italic" onClick="checkFunction()">
-                <label for="italic">Italic</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Font size:<br>
-                <select name="fontSize" id="fontSize" onChange="selectFontSize()">
-                    <option value="#">Select font size</option>
-                    <option value="8px">8px</option>
-                    <option value="12px">12px</option>
-                    <option value="16px">16px</option>
-                    <option value="80%">80%</option>
-                    <option value="100%">100%</option>
-                    <option value="120%">120%</option>
-                    <option value="1rem">1rem</option>
-                    <option value="1.5rem">1.5rem</option>
-                    <option value="2rem">2rem</option>
-                    <option value="1em">1em</option>
-                    <option value="1.5em">1.5em</option>
-                    <option value="2em">2em</option>
-                    <option value="small">small</option>
-                    <option value="medium">medium</option>
-                    <option value="large">large</option>
-                    <option value="x-large">x-large</option>
-
-                </select>
-            </td>
-        </tr>
-        </table>  
-        <div id="styleArea" >
+        <div id="styleArea">
             <p>
                 The Document Object Model (DOM) connects web pages to scripts or programming
                  languages by representing the structure of a document—such as the HTML 
@@ -166,6 +121,46 @@ right away
                 triggered, the event handlers get executed.
                 </p>
         </div>
+        Style the content above: (excerpt from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Mozzila</a>)
+        <fieldset>
+            <legend>Background color:</legend>   
+                <input type="radio" name="bgcolor" onClick="switchBackground('silver')">Silver<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('seagreen')">Sea Green<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('green')">Green<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('lime')">Lime<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('limegreen')">Lime Green<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('teal')">Teal<br>
+                <input type="radio" name="bgcolor" onClick="switchBackground('aquamarine')">Aqua Marine<br>
+        </fieldset>
+        <fieldset>
+            <legend>Font style:</legend>
+                <input type="checkbox" name="fontStyle" value="bold" id="bold" onClick="checkFunction()">
+                <label for="bold">Bold</label> <br>
+                <input type="checkbox" name="fontStyle" value="underline" id="underline" onClick="checkFunction()">
+                <label for="underline">Underline</label><br>
+                <input type="checkbox" name="fontStyle" value="italic" id="italic" onClick="checkFunction()">
+                <label for="italic">Italic</label>
+        </fieldset>
+        <fieldset>
+                <legend>Font size:</legend>
+                <select name="fontSize" id="fontSize" onChange="selectFontSize()">
+                    <option value="#">Select font size</option>
+                    <option value="80%">80%</option>
+                    <option value="100%">100%</option>
+                    <option value="120%">120%</option>
+                    <option value="1rem">1rem</option>
+                    <option value="1.5rem">1.5rem</option>
+                    <option value="2rem">2rem</option>
+                    <option value="1em">1em</option>
+                    <option value="1.5em">1.5em</option>
+                    <option value="2em">2em</option>
+                    <option value="small">small</option>
+                    <option value="medium">medium</option>
+                    <option value="large">large</option>
+                    <option value="x-large">x-large</option>
+                </select>
+        </fieldset>
+
     </form>
 </body>
 </html>
