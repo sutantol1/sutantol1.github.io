@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Ajax exercise with PHP file">
+<title>Ajax server time test</title>
+<style>
+body { background-color: #cccccc; }
+#wrapper { width:75%; border: 2px solid black; margin: 0 auto; padding:5px;}
+</style>
+</head>
+
+<body>
+
+<script>
+function ajaxFunction()
+  {
+  var xmlHttp;
+  try
+    {
+    // Firefox, Opera 8.0+, Safari
+    xmlHttp=new XMLHttpRequest();
+    }
+  catch (e)
+    {
+    // Internet Explorer
+    try
+      {
+      xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+      }
+    catch (e)
+      {
+      try
+        {
+        xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+      catch (e)
+        {
+        alert("Your browser does not support AJAX!");
+        return false;
+        }
+      }
+    }
+    xmlHttp.onreadystatechange=function()
+      {
+      if(xmlHttp.readyState==4)
+        {
+        document.myForm.time.value=xmlHttp.responseText;
+        }
+      }
+    xmlHttp.open("GET","serverTime.php",true);
+    xmlHttp.send(null);
+  }
+</script>
+<div id="wrapper">
+<h3>Enter your name in the box</h3>
+<p>As soon as you start typing your name, you will see the current time being displayed in the Time box</p>
+<form name="myForm">
+Name: <input type="text"
+onkeyup="ajaxFunction();" name="username">
+Time: <input type="text" name="time" readonly>
+</form>
+</div>
+
+</body>
+</html>
