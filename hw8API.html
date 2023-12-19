@@ -5,10 +5,6 @@
       <meta name="description" content="HW8 API - Open Weather API ">
       <title>HW8 API example </title>
       <link rel="stylesheet" href="styles.css">
-      <style>
-        .hidden {display: none;}
-        .error-msg {color: red;}
-      </style>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" >
@@ -109,10 +105,11 @@
     <h1>Open Weather API </h1>
     </header>
     <p>
-      <a href="hw8.html">Back to Homework 8 Main Page</a>
-      <br><br>
+ 
+      <input type='button' value='Close Window' onclick='window.close()'>
+      <br>
       </p>
-  
+
     <section id="weather-input">
       <fieldset><legend>Weather Info:</legend>
          <label for="city1">City:</label>
@@ -122,13 +119,12 @@
 
       <p>
         <button id="weatherButton"  onclick="BtnClick()">Get weather info</button>
-
      </p>
    </fieldset>
      
      <p id="city_info" ></p>
      <p id="error" class="eror_msg"></p>
-   
+     
    </section>
   </body>
 </html>

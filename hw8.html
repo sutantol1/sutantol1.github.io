@@ -1,16 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>Homework 8</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="description" content="HW7 Part 1 - Customizing Font & Background ">
+  <title>HW7 Part 2 - Creating and retrieving cookie </title>
+  <link rel="stylesheet" href="styles.css">
+<style>
+  h2, button {margin-left: 30px;}
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
 </head>
 <body>
-    <header><h1>Homework 8</h1></header>
-    <br>
-    <a href="hw1.html" id="BackToMain">Back to main page</a>
-    <br>
-    <br>
-    <p>Coming soon</p>
+  <header><h1>Homework 8 - AJAX Application</h1></header>
+  <p>
+    <a href="hw1.html">Back to Main Page</a>
+    <br><br>
+  </p>
+<button type="button" onclick="loadDoc()">Get CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+
+<h2>Explanation of AJAX</h2>
+<p>Ajax (Asynchronous JavaScript and XML) is a technique to asynchronously 
+  communicate with a server and update a webpage once the response is received, 
+  without reloading the whole webpage. An asynchronous request occurs when the 
+  web application sends a request to the server and continues running without 
+  waiting for the server response. 
+  Ajax is used to transmit plain text, HTML, XML, and JSON.
+</p>
+<p>
+  In this case, when clicking the "Get CD collection" button above, it executes loadDoc() function.
+  The loadDoc() function creates an XMLHttpRequest object, 
+  adds the function to be executed when the server response is ready, 
+  and sends the request off to the server.
+  
+  When the server response is ready, an HTML table is built, 
+  nodes (elements) are extracted from the XML file, 
+  and it finally updates the element "demo" with the HTML table filled with XML data from 
+  cd_catalog.xml file.
+  <a href="https://www.w3schools.com/xml/ajax_intro.asp">Introduction to Ajax</a> provides more information.
+  </p>
+<h2>REST API</h2>
+<p><a href="https://openweathermap.org/">Open Weather Map</a> is one of many REST APIs,  a subscription based that will provide 
+  access to current weather data, hourly, 5- and 16-day forecast.  Open Weather Map offers free, as well as fee based subscription 
+  to access for more in-depth weather info. The subscription plans differ in the APIs products range, level of service provided, 
+  the overall amount of calls per minute and other features. 
+  The JSON format is used by default. To get data in the XML or HTML format, just use “xml” or “html” for the mode parameter. 
+  The HTML format is available for Current Weather API only. 
+  The API key is needed to call any of the weather APIs, and is activated after 2 hours after succesful registration 
+  of the account.
+  To start and continue calling Open Weather API, developers can look into the 
+  <a href="https://openweathermap.org/appid">guide on how to start using Weather API.</a></p>
+  
+ <!--<button type="button" onclick="window.open('hw8API.html', '_blank');">Example of using Open Weather API</button>
+  --> 
+  <button type="button" onclick="window.open('hw8API.html', 'new_window', 'top=50,left=50,width=600,height=500');">Example of using Open Weather API</button>
+<br><br>
+
+  <script>
+    function loadDoc() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        myFunction(this);
+      }
+      xhttp.open("GET", "cd_catalog.xml");
+      xhttp.send();
+    }
+    function myFunction(xml) {
+      const xmlDoc = xml.responseXML;
+      const x = xmlDoc.getElementsByTagName("CD");
+      let table="<tr><th>Artist</th><th>Title</th></tr>";
+      for (let i = 0; i <x.length; i++) { 
+        table += "<tr><td>" +
+        x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+        "</td><td>" +
+        x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+        "</td></tr>";
+      }
+      document.getElementById("demo").innerHTML = table;
+    }
+    </script>
 </body>
 </html>

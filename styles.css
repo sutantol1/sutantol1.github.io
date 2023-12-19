@@ -145,3 +145,6 @@ input[type=button], input[type=reset], button {
    font-weight: bold;
    font-style: normal;
 }
+
+.hidden {display: none;}
+.error-msg {color: red;}
