@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="HW7 Part 1 - Customizing Font & Background ">
+  <title>HW7 Part 2 - Creating and retrieving cookie </title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript">
+    function createCookie() {
+        var cValue = document.getElementById("user").value;
+        var cNameValue = document.getElementById("name").value;
+        document.cookie = "name=" + cNameValue + ";";
+        document.cookie = "username=" + cValue + ";";
+    }
+    
+
+    function getCookie(cName) {
+    var name = cName + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        console.log("ca "+ca[i]);
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+    }
+
+    function checkCookie() {
+       // var username = getCookie("user");
+        var name = getCookie("name");
+        console.log("checkCookie "+user+" name "+name);
+        if (name != "") {
+            console.log("name found");
+        document.getElementById("result").innerHTML="Welcome back " + name;
+        document.getElementById("hw7pt2form").style.display = "none";
+        } else {
+            console.log("name not found");
+        document.getElementById("hw7pt2form").style.display = "block";
+        }
+   }
+   </script>
+</head>
+<body onload="checkCookie();">
+    <header><h1>Homework 7 - Part 2 </h1>
+    </header>
+    <p>
+    <a href="hw7.html">Back to Homework 7 Main Page</a>
+    <br><br>
+    </p>
+
+    <form id="hw7pt2form">
+        <table>
+            <tr>
+                <td><label for="name">Enter your name:</label> </td>
+                <td><input type="text" name="name" id="name" autofocus required></td>
+            </tr>
+            <tr>
+                <td><label for="user">Enter your user name:</label></td>
+                <td><input type="text" name="user" id="user"></td>
+            </tr>
+        </table>
+        <br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Create Cookie" onclick="createCookie();">&nbsp;&nbsp;
+        <input type="reset" value="Clear Form">
+    </form>
+    <p id="result"></p>
+    </body>
+</html>

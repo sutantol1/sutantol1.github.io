@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="HW4 Part 4 - Compound Interest ">
+  <title>HW4 Part 2 - Compound Interest</title>
+ <link rel="stylesheet" href="styles.css"> 
+
+  <script type="text/javascript">
+
+    function compoundTable() {
+      /*The formula to calculate the compound interest is: A = P(1 + r)^n where:
+        P is the principal (the initial amount you borrow or deposit)
+        r is the annual rate of interest (percentage)
+        n is the number of years the amount is deposited
+        A is the amount of money accumulated after n years, including interest
+        */
+        var P = 1000;
+        var r, A, textA;
+        
+        for (i=5; i<=7; i++) {
+             r = i/ 100;
+
+            var textRow = "<p>For interest rate of " + i + "%:";
+            textRow += "<table><tr><th>Year</th><th>Amount on Deposit</th><th>Interest Rate</th></tr>";
+
+            for (year = 1; year <= 5; year++) {
+                A = P * (Math.pow((1 + (r)), (year)));
+                textA = A.toLocaleString("en-US", { style: "currency", currency: "USD" });
+                textRow += '<tr><td align="center">' + year + '</td><td align="center">' + textA + '</td><td align="center">' + r + '</td></tr>';
+                // console.log(`year: ${year}, amount on deposit: ${A}, rate: ${r}`);
+                //textRow += "<tr><td align='center'>" + year + "</td><td class='currency'>"+ A + "</td><td>" + r + "</td></tr>";
+            }
+            textRow += "</tr></table></p><br>";
+            document.getElementById("result").innerHTML += textRow;
+        }
+    }
+
+  </script>
+
+</head>
+
+<body onload="compoundTable()">
+  <header>
+    <h1>HW4 Part 2 - Learn about Compound Interest</h1>
+  </header>
+  <p>
+    <a href="hw4.html">Back to Homework 4 main page</a>
+    <br><br>
+  </p>
+  <p id="result"></p>
+
+</body>
+
+</html>

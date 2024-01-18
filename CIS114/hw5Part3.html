@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW5 Part 3">
+<title>HW5 Part 3</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    div { text-align: left;}
+</style>
+<script>
+  
+    var stateData = [
+        ["AL", "Alabama", "Montgomery", "4,903,185"],
+        ["AK", "Alaska", "Juneau", "731,545"],
+        ["AZ", "Arizona", "Phoenix", "7,278,717"],
+        ["AR", "Arkansas", "Little Rock", "3,017,825"],
+        ["CA", "California", "Sacramento", "39,512,223"],
+        ["CO", "Colorado", "Denver", "5,758,736"]
+    ];
+    
+    function displayResult(result) {
+        let displayTxt = "Thanks for your inquiry <br>";
+        displayTxt += "Here is the information you requested:<br><br>";
+        displayTxt += "State Abbr: " + result[0] + "<br>";
+        displayTxt += "State Name: " + result[1] + "<br>";
+        displayTxt += "Capital: " + result[2] + "<br>";
+        displayTxt += "Population: " + result[3] + "<br>";
+        return displayTxt;
+    }
+
+    function displayError() {
+        let errorTxt = "Sorry, we do not have information about this state<br>";
+        errorTxt += "We only have information for<br>";
+        for (var state of stateData) {
+            errorTxt += state[0] + ":  " + state[1] + "<br>";
+        }
+        return errorTxt;
+    }
+
+    function process() {
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("error").innerHTML = "";
+        let resultTxt = [];
+        let inputLowerCase = document.getElementById("state").value.toLowerCase();
+
+        let checkValue = 0;
+        
+        for (var i=0; i<stateData.length; i++) {
+
+            if ( stateData[i][0].toLowerCase() == inputLowerCase || 
+                 stateData[i][1].toLowerCase() == inputLowerCase  ) {
+                console.log('found ' + inputLowerCase);
+                resultTxt = stateData[i];
+                checkValue = 1;
+                // i = stateData.length;   //ends loop if match found
+                break;
+            }
+        }
+
+        if (checkValue === 1) {
+          //  console.log("resultTxt");
+            document.getElementById("result").innerHTML = displayResult(resultTxt);
+        } else {
+         //   console.log("not found");
+            document.getElementById("error").innerHTML = displayError();
+        }
+    }
+
+
+</script>
+</head>
+<body>
+    <header><h1>Homework 5 - Part 3 Extract Info in a 2D array</h1></header>
+    <p>
+    <a href="hw5.html">Back to Homework 5 main page</a>
+    <br><br>
+    </p>
+   <!-- 
+    <form onsubmit="return process();" onreset="return init();">
+    <form name="hw5pt3form"  method="post">
+    <input type="button" onClick="process()" id="submit" value="SUBMIT" name="submit">
+    <input type="reset"  onClick="window.location.reload()" id="reset" value="RESET" name="reset">
+    -->
+    <form  onreset="return window.location.reload();">
+        <label for="state">Enter State Name (full or abbreviated): &nbsp;</label>
+        <input type="text" id="state" name="state" required autofocus><br><br>
+        
+    <input type="button" id="submit" onClick="process()" value="SUBMIT" name="submit">
+    &nbsp; &nbsp; &nbsp;
+
+    <input type="reset" id="reset" value="RESET" name="reset"><br><br>
+
+    <div id="result"></div>
+    <div id="error"></div>
+</form>
+</body>
+</html>

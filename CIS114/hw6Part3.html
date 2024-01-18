@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="HW6 - Part 3">
+<title>HW6 Part 3</title>
+<link rel="stylesheet" href="styles.css">
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+<!-- Required for using jQuery input mask plugin -->
+<script src=
+   "https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js">
+</script>
+<script type="text/javascript">
+    // jQuery input mask on telephone format
+    $(document).ready(function () {
+        $("#phoneInput").inputmask("(999)999-9999");
+    });
+
+    function pass() {
+
+        var errorTxt = "";
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("areaCode").value = "";
+        document.getElementById("firstThree").value = "";
+        document.getElementById("lastFour").value = "";
+        var phone = document.getElementById("phoneInput").value;
+
+        /* if using pattern:
+        var phonePattern = document.getElementById("phoneInput");
+        */
+
+        //using regular expression
+        var myRegExp = /^\((\d{3})\)(\d{3})-(\d{4})$/;
+        var parts = phone.match(myRegExp);
+        if (parts != null) {
+            /*  if using pattern:
+            if (phonePattern.validity.valid){
+            var parts = phonePattern.value.match(myRegExp); 
+            if (parts != null) {  
+            */
+            document.getElementById("areaCode").value = parts[1];
+            document.getElementById("firstThree").value = parts[2];
+            document.getElementById("lastFour").value = parts[3];
+        } else {
+            errorTxt = "Invalid entry <br>Please enter number in this format (999)999-9999";
+            document.getElementById("error").innerHTML = errorTxt;
+            document.getElementById("phoneInput").focus();
+        }
+        
+    }
+</script>
+</head>
+<!-- 
+    Create a webpage with:
+a heading of your choice
+an input box for the user to type the phone number
+3 input boxes where you will present the result/output (area code, the first 3 digits of the phone number, the last 4 digits of the phone number)
+a button to start the process
+a button to clear the form
+an element such as div or paragraph to present any error message you need
+a hyper link to go back to the main page of Homework 6
+You will create a script to resolve the following:
+The user needs to type the telephone number, as a string, in this format (999) 999-9999.
+You should use the String method split or the match group related to regex to extract the area code; 
+the first 3 digits of the phone number; and the last 4 digits of the phone number
+-->
+<body>
+    <header><h1>Homework 6 - Part 3</h1>
+    </header>
+    <p>
+    <a href="hw6.html">Back to Homework 6 main page</a>
+    <br><br>
+    </p>
+    <form>
+        <label for="phoneInput">Enter phone number ex: (999)999-9999: </label><br>
+        <input type="tel" id="phoneInput" pattern="\(\d{3}\)\d{3}-\d{4}" title="Format: (999)999-9999" autofocus><br><br>
+        <input type="button" name="submit" value="Parse Phone Number" onClick="pass()">&nbsp; &nbsp; &nbsp;
+        <input type="reset" name="reset" value="Reset" onClick="window.location.reload()"><br><br>
+        <label>Phone number entered: </label><input type="number" id="areaCode" style="width: 3em" readonly>
+        <input type="number" id="firstThree" style="width: 3em" readonly>
+        <input type="number" id="lastFour" style="width: 4em" readonly>
+
+        <p id="error"></p>
+    </form>
+</body>
+</html>
