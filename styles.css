@@ -18,48 +18,7 @@ main {
    margin: 30px; 
 }
 
-table {
-   margin-left: 30px;
-}
-table  td {
-   border-radius: 5px;
-   border-style:solid ;
-   border-color: grey;
-   /*background: rgb(206, 235, 243);*/
-   padding: 5px;
-   margin: 5px;
-}
-th {
-   color: var(--accent-color);
-   background-color: rgb(209, 244, 242);
-   font-size:larger;
-   margin: 10px 10px;
-   text-shadow: 1px 1px 1px gray; 
-   border-style:solid ;
-   border-color: grey;
-   border-radius: 5px;
-   padding: 10px;
-}
-tr:nth-child(even) {
-   background: rgb(193, 218, 218);
-}
 
-
-a:link {
-   color: var(--font-color); 
-}   
-
-a:visited {
-   color: var(--font-color);  
-}   
-
-a:hover {
-   color: var(--accent-color); 
-}  
-
-a:active {
-   color: var(--accent-color);
-}   
 
 header {
    border-radius: 10px;
@@ -76,45 +35,7 @@ h1 {
 
 p { margin-left: 30px;}
 
-div {
-   margin: 0 auto; 
-   text-align:center;
-} 
-
-section {
-   margin: 30px;
-}
-form {
-   font-size: 110%;
-   border: 3px double;
-   border-radius: 10px;
-   background-color:  lavender;
-   width: 400px; 
-   margin-left: 30px;
-    margin: 0px auto; 
-   padding: 20px;
-}
-
-input:focus {
-   background-color: lightblue;
-}
-
-div fieldset {
-   text-align: left;
-}
-
-input[type=button], input[type=reset], button {
-    float:none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 120%;
-    text-shadow: 1px 1px 2px gray; 
-    box-shadow: 2px 2px 2px gray;
-}
-
-.rate, .currency {
-   text-align: right;
-}
+img { border: 1px solid;}
 
 #error {
    color: red;
