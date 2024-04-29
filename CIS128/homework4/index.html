@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta http-equiv="content-type" text="text/html"> -->
+    <!-- Responsive -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Meta Tags required for Progressive Web App -->
+    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <meta name="theme-color" content="black">
+
+    <!-- Title -->
+    <title>Homework 4 - PWA</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script>
+        /*
+        function selectBackground(myForm){
+            //console.log("my form:"+myForm.bkgrnd.options[myForm.bkgrnd.selectedIndex].value);
+            document.body.style.backgroundImage = `url(${myForm.bkgrnd.options[myForm.bkgrnd.selectedIndex].value})`;
+        }
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('mysw.js')
+        }    
+        */
+    </script>
+    <!-- Manifest File link -->
+    <link rel="manifest" href="manifest.json">
+
+    <script src="app.js"></script>
+
+</head>
+<body> 
+    <header>
+    <h1>Homework 4</h1>
+    <h2>PWA</h2>
+    </header>
+
+    <p>A progressive web app (PWA) is an app that's built using web platform technologies, 
+        providing installable web application.</p>
+
+    <p>Like a website, a PWA can run on multiple platforms and devices from a single codebase. Like a platform-specific app, it can be installed on the device, can operate while offline 
+        and in the background, and can integrate with the device and with other installed apps.
+    </p>
+    <p>
+    Advantages of PWA:</p>
+    <ul>
+        <li>Easy to access, no need to install anything</li>
+        <li>Minimal storage requirement</li>
+        <li>Fast, can work offline</li>
+        <li>Offering a high-quality user experience</li>
+    </ul>
+   
+
+    <form>
+    <!--
+    <label for="name">Your name:</label><br>
+    <input type="text" id="name" name="name" onChange="getName(this.form)">
+    <br><br>
+    -->
+    <label for="bkgrnd">Select your preffered background:</label><br>
+    <select name="bkgrnd" id="bkgrnd" onChange="selectBackground(this.form)">
+        <option value="#">Select background image</option>
+        <option value="lightblue.jpg">Light Blue</option>
+        <option value="lightgold.jpg">Light Gold</option>
+    </select>
+    
+
+    </form>
+
+    <!--
+    <img src="icon-512.png" alt="icon that represents this simple PWA">
+    -->
+    <img srcset="images/icon-128.png 128w,
+    images/icon-144.png 144w,
+    images/icon-512.png 512w"
+    sizes="(min-width: 36em) 33.3vw,
+    100vw"
+    src="images/Icon-512.png"
+    alt="icon that represents this simple PWA">
+
+</body>
+</html>
