@@ -15,17 +15,27 @@
     <!-- Title -->
     <title>Homework 4 - PWA</title>
     <link rel="stylesheet" href="style.css"> 
-    <script>
-        /*
-        function selectBackground(myForm){
-            //console.log("my form:"+myForm.bkgrnd.options[myForm.bkgrnd.selectedIndex].value);
-            document.body.style.backgroundImage = `url(${myForm.bkgrnd.options[myForm.bkgrnd.selectedIndex].value})`;
-        }
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('mysw.js')
-        }    
-        */
+
+<script language="javascript">
+var db = getLocalStorage() || dispError('Local Storage not supported.');
+
+function getLocalStorage() {
+    try {
+        if( !! window.localStorage ) return window.localStorage;
+    } catch(e) {
+        return undefined;
+    }
+}
+
+
+function getName() {
+    if(errorMessage) return;
+    var f = element('hw4Form'); 
+    db.setItem('name', f.elements['name'].value);
+    dispResults();
+}
     </script>
+ 
     <!-- Manifest File link -->
     <link rel="manifest" href="manifest.json">
 
@@ -54,12 +64,12 @@
     </ul>
    
 
-    <form>
-    <!--
+    <form id="hw4Form">
+    <!--  added local storage extra credit -->
     <label for="name">Your name:</label><br>
-    <input type="text" id="name" name="name" onChange="getName(this.form)">
+    <input type="text" id="name" name="name" onChange="getName()">
     <br><br>
-    -->
+    
     <label for="bkgrnd">Select your preffered background:</label><br>
     <select name="bkgrnd" id="bkgrnd" onChange="selectBackground(this.form)">
         <option value="#">Select background image</option>
