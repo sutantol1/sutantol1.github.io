@@ -12,11 +12,12 @@ if (navigator.serviceWorker) {
     console.log('Service Worker is not supported by this browser'); 
 }
 
+
+/*  another way to register...
 if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('mysw.js')
+    navigator.serviceWorker.register('./mysw.js')
 }    
     
-/*  another way to register...
 if (navigator.serviceWorker) {
     window.addEventListener('load', () => {
 	   navigator.serviceWorker.register('./service-worker.js')
