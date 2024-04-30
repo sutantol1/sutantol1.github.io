@@ -31,7 +31,7 @@ self.addEventListener('install', event => {
 */
 //code
 self.addEventListener('install', e => {
-    e.waitUntil(caches.open(CACHE_NAME).then(async (cache) => {
+    e.waitUntil(caches.open(CACHE_VERSION).then(async (cache) => {
       let ok;
   
       console.log('ServiceWorker: Caching files:', c.length, c);
