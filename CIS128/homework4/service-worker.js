@@ -34,7 +34,7 @@ self.addEventListener('install', e => {
     e.waitUntil(caches.open(CACHE_VERSION).then(async (cache) => {
       let ok;
   
-      console.log('ServiceWorker: Caching files:', c.length, c);
+      console.log('ServiceWorker: Caching files:', CACHE_FILES.length, CACHE_FILES);
       try {
         ok = await cache.addAll(CACHE_FILES);
       } catch (err) {
