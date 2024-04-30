@@ -15,7 +15,7 @@ var CACHE_FILES = [
     'index.html',
     'styles.css'
 ];
-
+/*  
 self.addEventListener('install', event => {
     console.log('SW installed');
     event.waitUntil(
@@ -28,6 +28,21 @@ self.addEventListener('install', event => {
         .then(() => self.skipWaiting())
     );
 });
+*/
+self.addEventListener("install", (event) => {
+    console.log("Service Worker : Installed!")
+    event.waitUntil(
+        (async() => {
+            try {
+                cache_obj = await caches.open(cache)
+                cache_obj.addAll(caching_files)
+            }
+            catch{
+                console.log("error occured while caching...")
+            }
+        })()
+    )
+} )
 
 self.addEventListener('activate', event => {
     console.log('SW activated');
