@@ -15,26 +15,6 @@
     <!-- Title -->
     <title>Homework 4 - PWA</title>
     <link rel="stylesheet" href="style.css"> 
-
-<script language="javascript">
-var db = getLocalStorage() || dispError('Local Storage not supported.');
-
-function getLocalStorage() {
-    try {
-        if( !! window.localStorage ) return window.localStorage;
-    } catch(e) {
-        return undefined;
-    }
-}
-
-
-function getName() {
-    if(errorMessage) return;
-    var f = element('hw4Form'); 
-    console.log("getName"+ f.elements['name'].value);
-    db.setItem('name', f.elements['name'].value);
-}
-    </script>
  
     <!-- Manifest File link -->
     <link rel="manifest" href="manifest.json">

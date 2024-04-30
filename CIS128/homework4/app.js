@@ -28,10 +28,23 @@ if (navigator.serviceWorker) {
     console.log('Service Worker is not supported in this browser.')
 }
 */
+
 // get Name
 function getName(myForm) {
     let name=document.getElementById("name").value;
-    console.log("name"+name);
+    var db = getLocalStorage() || dispError('Local Storage not supported.');
+    if(errorMessage) return;
+    console.log("getName "+ name);
+    db.setItem('name', name);
+}
+
+
+function getLocalStorage() {
+    try {
+        if( !! window.localStorage ) return window.localStorage;
+    } catch(e) {
+        return undefined;
+    }
 }
 
 // select Background 
