@@ -1,19 +1,19 @@
 var CACHE_VERSION = 'myapp-v1';
 var CACHE_FILES = [
-    '/images/offline.png',
-    '/images/icon-72.png',
-    '/images/icon-128.png',
-    '/images/icon-144.png',
-    '/images/icon-172.png',
-    '/images/icon-196.png',
-    '/images/icon-512.png',
-    '/images/lightblue.jpg',
-    '/images/lightgold.png',
-    '/images/narrowScreenshot.png',
-    '/images/wideScreenshot.png',
+    'images/offline.png',
+    'images/icon-72.png',
+    'images/icon-128.png',
+    'images/icon-144.png',
+    'images/icon-172.png',
+    'images/icon-196.png',
+    'images/icon-512.png',
+    'images/lightblue.jpg',
+    'images/lightgold.jpg',
+    'images/narrowScreenshot.png',
+    'images/wideScreenshot.png',
     'app.js',
     'index.html',
-    'styles.css'
+    'style.css'
 ];
 /*  
 self.addEventListener('install', event => {
