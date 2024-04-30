@@ -31,8 +31,8 @@ function getLocalStorage() {
 function getName() {
     if(errorMessage) return;
     var f = element('hw4Form'); 
+    console.log("getName"+ f.elements['name'].value);
     db.setItem('name', f.elements['name'].value);
-    dispResults();
 }
     </script>
  
