@@ -1,6 +1,6 @@
 // register it, tell the browser where the JavaScript file of your service worker is stored
 if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('./service-worker.js', {scope: './about'})
+    navigator.serviceWorker.register('./service-worker.js')
     .then(function (registration) {
 // Registration of service worker ok
     console.log('Registration of service worker successful with scope: ',
@@ -17,7 +17,7 @@ if (navigator.serviceWorker) {
 if (typeof navigator.serviceWorker !== 'undefined') {
     navigator.serviceWorker.register('./mysw.js')
 }    
-    
+// this is from sw1/app.js
 if (navigator.serviceWorker) {
     window.addEventListener('load', () => {
 	   navigator.serviceWorker.register('./service-worker.js')
