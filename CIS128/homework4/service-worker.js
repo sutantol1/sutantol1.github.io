@@ -29,7 +29,7 @@ self.addEventListener('install', event => {
     );
 });
 
-/*
+/* to check the error 
 self.addEventListener('install', e => {
     e.waitUntil(caches.open(CACHE_VERSION).then(async (cache) => {
       let ok;
@@ -52,23 +52,8 @@ self.addEventListener('install', e => {
   
     console.log('ServiceWorker installed');
   });
-  */
-/*
-self.addEventListener("install", (event) => {
-    console.log("Service Worker : Installed!")
-    event.waitUntil(
-        (async() => {
-            try {
-                cache_obj = await caches.open(cache)
-                cache_obj.addAll(caching_files)
-            }
-            catch{
-                console.log("error occured while caching...")
-            }
-        })()
-    )
-} )
 */
+
 
 self.addEventListener('activate', event => {
     console.log('SW activated');
