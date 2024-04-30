@@ -15,7 +15,7 @@ var CACHE_FILES = [
     'index.html',
     'style.css'
 ];
-/*  
+
 self.addEventListener('install', event => {
     console.log('SW installed');
     event.waitUntil(
@@ -28,8 +28,8 @@ self.addEventListener('install', event => {
         .then(() => self.skipWaiting())
     );
 });
-*/
-//code
+
+/*
 self.addEventListener('install', e => {
     e.waitUntil(caches.open(CACHE_VERSION).then(async (cache) => {
       let ok;
@@ -47,12 +47,12 @@ self.addEventListener('install', e => {
           }
         }
       }
-  
       return ok;
     }));
   
     console.log('ServiceWorker installed');
   });
+  */
 /*
 self.addEventListener("install", (event) => {
     console.log("Service Worker : Installed!")
