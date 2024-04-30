@@ -33,7 +33,7 @@ if (navigator.serviceWorker) {
 function getName(myForm) {
     let name=document.getElementById("name").value;
     var db = getLocalStorage() || dispError('Local Storage not supported.');
-    if(errorMessage) return;
+    //if(errorMessage) return;
     console.log("getName "+ name);
     db.setItem('name', name);
 }
