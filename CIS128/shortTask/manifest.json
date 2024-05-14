@@ -1,0 +1,36 @@
+{
+    "name":"PWA",
+    "short_name":"Homework 4 PWA",
+    "description":"Install Homework 4 PWA ",
+    "theme_color":"#bee2ef",
+    "background_color":"#cccccc",
+    "display":"standalone",
+    "orientation":"portrait",
+    "scope":"/",
+    "start_url":"/index.html",
+    "icons":[
+        {"src":"images/icon-72.png","sizes":"72x72","type":"image/png"},
+        {"src":"images/icon-144.png","sizes":"144x144","type":"image/png"},
+        {"src":"images/icon-172.png","sizes":"172x172","type":"image/png"},
+        {"src":"images/icon-196.png","sizes":"196x196","type":"image/png"},
+        {"src":"images/icon-512.png","sizes":"512x512","type":"image/png"},
+        {"src":"images/icon-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+        ],
+    "screenshots": [
+    {
+     "src": "images/narrowScreenshot.png",
+      "sizes": "320x500",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Monstera Widgets"
+    },
+    {
+        "src": "images/wideScreenshot.png",
+         "sizes": "640X320",
+         "type": "image/png",
+         "form_factor": "wide",
+         "label": "Monstera Widgets"
+       }
+    ]
+
+}
